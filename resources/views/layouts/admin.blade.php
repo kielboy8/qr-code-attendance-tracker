@@ -22,15 +22,7 @@
 <body class="bg-light">
     @include ('layouts.navbar')
 
-    <div class="container-fluid">
-        <div class="row">
-            @include ('layouts.sidebar')
-
-            <main role="main" class="col ml-sm-auto pt-4 px-5" id="app">
-                @yield ('content')
-            </main>
-        </div>
-    </div>
+    @yield ('content')
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
