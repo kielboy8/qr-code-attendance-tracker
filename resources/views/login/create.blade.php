@@ -23,7 +23,7 @@
                                         <input type="password" name="password" placeholder="Password" class="form-control rounded-0 py-3 border-top-0 border-left-0 border-right-0">
                                     </div>
                                     <div class="form-group text-center">
-                                        <input type="submit" name="login" value="Sign In" class="btn btn-primary btn-lg rounded-0 form-control">
+                                        <input type="submit" name="login" value="Sign In" class="btn btn-primary btn-lg rounded-0 shadow form-control">
                                     </div>
                                 </form>
                             </div>

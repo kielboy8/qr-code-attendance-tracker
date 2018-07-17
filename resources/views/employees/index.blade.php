@@ -9,14 +9,14 @@
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 ">
                     <h1 class="h2">Employees</h1>
                     <div class="btn-toolbar mb-2 mb-md-0">
-                        <button type="button" class="btn btn-outline-secondary my-auto" data-toggle="modal" data-target="#createEmployee">
+                        <button type="button" class="btn btn-primary rounded-0 shadow-sm" data-toggle="modal" data-target="#createEmployee">
                             Add Employee
                         </button>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col">
-                        <div class="card p-5 border-0 rounded-0 bg-white shadow-sm">
+                        <div class="card p-0 border-0 rounded-0 bg-white shadow-sm">
                             <table class="table">
                                 <thead>
                                     <tr>
@@ -51,6 +51,7 @@
     </div>
 </div>
 
+<!-- Create Employee Modal -->
 <div class="modal fade" id="createEmployee" tabindex="-1" role="dialog" aria-labelledby="createEmployee" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -76,4 +77,29 @@
         </div>
     </div>
 </div>
+<<<<<<< Updated upstream
 @endsection
+=======
+
+<!-- QR Code Modal -->
+<div class="modal fade" id="QrModal" tabindex="-1" role="dialog" aria-labelledby="QrModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <img id="qr-field" src="">
+            </div>
+            <!-- div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div -->
+        </div>
+    </div>
+</div>
+@endsection
+>>>>>>> Stashed changes
