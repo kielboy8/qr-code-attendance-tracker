@@ -16,19 +16,18 @@ class LoginController extends Controller
 
     public function store() {
     	if (!auth()->attempt([
-    		'email' => request('inputEmail'), 
-    		'password' => request('inputPassword')])) {
-			return back()->withErrors([
-				'message' => 'Please check your credentials and try again.'
-			]);
-		}
+    		'email' => request('email'), 
+    		'password' => request('password')])) {
+				return back()->withErrors([
+					'message' => 'Please check your credentials and try again.'
+				]);
+			}
 
-		return redirect()->home();
+		return redirect('/admin');
     }
 
     public function destroy() {
     	auth()->logout();
-
-    	return redirect()->home();
+    	return redirect('/');
     }
 }

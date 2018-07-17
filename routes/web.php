@@ -13,6 +13,10 @@
 
 Route::get('/', 'ScanController@index');
 
+Route::get('/login', [ 'as' => 'login', 'uses' => 'LoginController@create']);
+
+Route::post('/login', [ 'as' => 'login', 'uses' => 'LoginController@store']);
+
 Route::get('/admin', 'AdminController@index');
 
 Route::get('/admin/employees', 'EmployeesController@index');
@@ -22,3 +26,5 @@ Route::post('/admin/employees/create', 'EmployeesController@store');
 Route::get('/admin/attendance', 'AttendancesController@index');
 
 Route::get('/admin/notifications', 'NotificationsController@index');
+
+Route::get('/logout', 'LoginController@destroy');

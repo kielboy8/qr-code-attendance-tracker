@@ -4,8 +4,14 @@
     	Attendance
     </a>
     <ul class="navbar-nav px-3">
+    	@guest
         <li class="nav-item text-nowrap">
-            <a class="nav-link lead" href="#">Sign out</a>
+            <a class="nav-link lead" href="/login">Login</a>
         </li>
+        @else
+        <li class="nav-item text-nowrap">
+            <a class="nav-link lead" href="/logout">Logout</a>
+        </li>
+        @endif
     </ul>
 </nav>
