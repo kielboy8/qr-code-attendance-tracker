@@ -24,3 +24,5 @@ Route::post('/admin/employees/create', 'EmployeesController@store');
 Route::get('/admin/attendance', 'AttendancesController@index');
 
 Route::get('/admin/notifications', 'NotificationsController@index');
+
+Route::post('/admin/employees/', 'QrCodeController@index');
