@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('layouts.scan');
-});
+Route::get('/', 'ScanController@index');
 
 Route::get('/admin', 'AdminController@index');
 

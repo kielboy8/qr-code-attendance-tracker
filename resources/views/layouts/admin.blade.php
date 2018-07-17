@@ -21,16 +21,7 @@
 <body class="bg-light">
     @include ('layouts.navbar')
 
-    <div class="container-fluid">
-        <div class="row">
-            @include ('layouts.sidebar')
-
-            <main role="main" class="col ml-sm-auto pt-4 px-5">
-                @yield ('content')
-            </main>
-        </div>
-    </div>
-
+    @yield ('content')
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="https://unpkg.com/ionicons@4.2.4/dist/ionicons.js"></script>
