@@ -11,7 +11,9 @@
 |
 */
 
-Route::get('/', 'ScanController@index');
+Route::get('/', 'ScanController@create');
+
+Route::post('/scan', 'ScanController@store');
 
 Route::get('/login', [ 'as' => 'login', 'uses' => 'LoginController@create']);
 
@@ -24,6 +26,8 @@ Route::get('/admin/employees', 'EmployeesController@index');
 Route::post('/admin/employees/create', 'EmployeesController@store');
 
 Route::get('/admin/attendance', 'AttendancesController@index');
+
+Route::get('/admin/attendance/?month={month}&day={day}&year={year}', 'AttendancesController@show');
 
 Route::get('/admin/notifications', 'NotificationsController@index');
 

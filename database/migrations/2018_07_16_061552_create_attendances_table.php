@@ -15,6 +15,10 @@ class CreateAttendancesTable extends Migration
     {
         Schema::create('attendances', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('name');
+            $table->string('position');
+            $table->string('attendance_id');
+            $table->string('contact_no');
             $table->timestamps();
         });
     }
