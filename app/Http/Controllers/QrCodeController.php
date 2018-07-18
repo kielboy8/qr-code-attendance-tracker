@@ -9,7 +9,7 @@ class QrCodeController extends Controller
 {
     public function index(Request $request) {
         $id = request('body');
-        $qrcode = base64_encode(QrCode::format('png')->size(300)->generate("This is a test content (id:" . $id . ")"));
+        $qrcode = base64_encode(QrCode::format('png')->size(300)->generate($id));
 
         return response()->json(compact('qrcode'));
     }
