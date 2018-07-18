@@ -77,9 +77,6 @@
         </div>
     </div>
 </div>
-<<<<<<< Updated upstream
-@endsection
-=======
 
 <!-- QR Code Modal -->
 <div class="modal fade" id="QrModal" tabindex="-1" role="dialog" aria-labelledby="QrModalLabel" aria-hidden="true">
@@ -102,4 +99,3 @@
     </div>
 </div>
 @endsection
->>>>>>> Stashed changes
