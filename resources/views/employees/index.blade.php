@@ -36,7 +36,9 @@
                                         <td>{{ $employee->updated_at }}</td>
                                         <td>
                                             <i class="mdi mdi-account-edit h5"></i>
-                                            <i class="mdi mdi-eye-outline h5"></i>
+                                            <a id="{{$employee->attendance_id}}" class="action-btn btn-view" data-toggle="modal" data-target="#QrModal">
+                                                <i class="mdi mdi-eye-outline h5"></i>
+                                            </a>
                                             <i class="mdi mdi-delete-outline h5"></i>
                                         </td>
                                     </tr>
