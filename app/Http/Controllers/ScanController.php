@@ -26,8 +26,6 @@ class ScanController extends Controller
 				'position' => $attendance->position,
 	            'attendance_id' => $attendance->attendance_id,
 				'contact_no' => $attendance->contact_no,
-				'time_in' => Carbon::now(),
-				'time_out' => Carbon::now()
 			]);
 		}
 

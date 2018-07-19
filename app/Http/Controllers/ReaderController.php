@@ -17,8 +17,8 @@ class ReaderController extends Controller
 
         if ($employee != null)
             return response()->json([
-                'response'  => 'valid',
-                'id'        => $employee->id
+                'response' => 'valid',
+                'id' => $employee->id
             ]);
         else
             return response()->json([

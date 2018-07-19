@@ -8,9 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>
-        QR Attendance
-    </title>
+    <title>QR Attendance</title>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
@@ -20,6 +18,8 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+
+    <script type="text/javascript" src="{{ asset('js/instascan.min.js') }}"></script>
 </head>
 <body class="bg-light">
     @include ('layouts.navbar')
@@ -36,5 +36,7 @@
     <script src="https://unpkg.com/ionicons@4.2.4/dist/ionicons.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="{{ asset('js/generateqr.js') }}"></script>
+    <!-- <script src="{{ asset('js/jquery.redirect.js') }}"></script>
+    <script src="{{ asset('js/qrreader.js') }}"></script> -->
 </body>
 </html>

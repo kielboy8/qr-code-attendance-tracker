@@ -6,7 +6,7 @@
     <div class="container-fluid">
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 ">
             <h1 class="h2">Employees</h1>
-            <button type="button" class="menu-toggle btn btn-primary rounded-0 shadow">
+            <button type="button" class="btn btn-primary rounded-0 shadow" data-toggle="modal" data-target="#createEmployee">
                 Add Employee
             </button>
         </div>
@@ -28,7 +28,7 @@
                             <tr>
                                 <td>{{ $employee->id }}</td>
                                 <td>
-                                    <div class="d-flex flex-row align-items-center">
+                                    <div class="d-flex flex-row align-items-start">
                                         <i class="mdi mdi-account-circle h1 mr-3"></i>
                                         <div class="d-flex flex-column">
                                             <p class="mb-0 lead">{{ $employee->name }}</p>

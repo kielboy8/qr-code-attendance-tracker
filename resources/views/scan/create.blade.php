@@ -7,9 +7,9 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col"></div>
-                    <main role="main" class="col-6 ml-sm-auto pt-4 px-5">
-                        <div class="card p-5">
-                            <div class="card-body">
+                    <main role="main" class="col ml-sm-auto pt-1 px-5">
+                        <div class="card p-0">
+                            <div class="card-body text-center">
                                 <h1 class="h3 card-title">Attendance Input Sample</h1>
                                 <form action="/scan" method="POST">
                                     @csrf
