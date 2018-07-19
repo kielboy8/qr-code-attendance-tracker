@@ -27,7 +27,7 @@ class ReaderController extends Controller
     }
 
     public function show() {
-        $employee = Employee::find(request('id'))->first();
+        $employee = Employee::find(request('id'));
 
         return view('reader.dashboard', compact('employee'));
     }

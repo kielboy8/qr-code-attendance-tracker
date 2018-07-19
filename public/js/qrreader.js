@@ -17,7 +17,6 @@ $(document).ready(function() {
                 id: content
             },
             success: function(data) {
-
                 if (data.response == 'valid')
                     $.redirect('/reader/employee', {'id': data.id, '_token': $('meta[name="csrf-token"]').attr('content')});
                 else
