@@ -6,13 +6,13 @@
     <div class="container-fluid">
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 ">
             <h1 class="h2">Employees</h1>
-            <button type="button" class="btn btn-primary rounded-0 shadow-sm" data-toggle="modal" data-target="#createEmployee">
+            <button type="button" class="btn btn-primary rounded-0 shadow" data-toggle="modal" data-target="#createEmployee">
                 Add Employee
             </button>
         </div>
         <div class="row">
             <div class="col">
-                <div class="card p-0 border-0 rounded-0 bg-white shadow-sm mb-3">
+                <div class="card px-3 py-2 border-0 bg-white shadow mb-3">
                     <table class="table">
                         <thead>
                             <tr>

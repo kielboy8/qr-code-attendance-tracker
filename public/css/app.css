@@ -10513,7 +10513,7 @@ body {
 }
 
 .sidebar .nav-link {
-  font-weight: 300;
+  font-weight: 600;
   font-size: 1.1rem;
 }
 
@@ -10567,7 +10567,6 @@ body {
 
 .sidebar .nav-link.active {
   color: #e20000;
-  font-weight: 600;
 }
 
 /*
@@ -10580,6 +10579,10 @@ body {
 
 .border-bottom {
   border-bottom: 1px solid #e5e5e5;
+}
+
+.lead {
+  font-weight: 600;
 }
 
 /*
@@ -10595,6 +10598,10 @@ body {
 
 #acc-img {
   padding-right: 0 !important;
+}
+
+.table td {
+  font-weight: 600;
 }
 
 /*
@@ -10637,5 +10644,9 @@ body {
 .show > .btn-primary.dropdown-toggle {
   background-color: #ba0000;
   border-color: #ba0000;
+}
+
+.btn {
+  font-weight: 600 !important;
 }
 

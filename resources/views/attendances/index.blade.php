@@ -7,14 +7,14 @@
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 ">
             <h1 class="h2">Attendance</h1>
             <div class="dropdown mb-2 mb-md-0">
-                <a href="/admin/attendance" class="btn btn-primary rounded-0 shadow-sm" role="button">
+                <a href="/admin/attendance" class="btn btn-primary rounded-0 shadow" role="button">
                     View All
                 </a>
             </div>
         </div>
         <div class="row">
             <div class="col-3">
-                <div class="card p-0 border-0 rounded-0 bg-white shadow-sm">
+                <div class="card px-3 py-2 border-0 bg-white shadow mb-3">
                     <table class="table table-borderless border-top-0">
                         <thead>
                             <tr>
@@ -36,7 +36,7 @@
                 </div>
             </div> 
             <div class="col">
-                <div class="card p-0 border-0 rounded-0 bg-white shadow-sm">
+                <div class="card px-3 py-2 border-0 bg-white shadow mb-3">
                     <table class="table">
                         <thead>
                             <tr>

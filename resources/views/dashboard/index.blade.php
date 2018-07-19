@@ -19,11 +19,11 @@
         </div>
         <div class="row">
             <div class="col-4">
-                <div class="card p-5 border-0 rounded-0 bg-white shadow-sm">
+                <div class="card px-3 py-2 border-0 bg-white shadow mb-3">
                 </div>
             </div>
             <div class="col-8">
-                <div class="card p-5 border-0 rounded-0 bg-white shadow-sm">
+                <div class="card px-3 py-2 border-0 bg-white shadow mb-3">
                 </div>
             </div> 
         </div>
