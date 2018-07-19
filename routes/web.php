@@ -11,7 +11,9 @@
 |
 */
 
-Route::get('/', 'ScanController@index');
+Route::get('/', 'ScanController@create');
+
+Route::post('/scan', 'ScanController@store');
 
 Route::get('/login', [ 'as' => 'login', 'uses' => 'LoginController@create']);
 

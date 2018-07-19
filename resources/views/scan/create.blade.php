@@ -11,10 +11,11 @@
                         <div class="card p-5">
                             <div class="card-body">
                                 <h1 class="h3 card-title">Attendance Input Sample</h1>
-                                <form>
+                                <form action="/scan" method="POST">
+                                    @csrf
                                     <div class="form-group">
-                                        <label for="name">Enter Employee Code:</label>
-                                        <input type="text" name="name" placeholder="Employee Code" class="form-control">
+                                        <label for="name">Attendance ID:</label>
+                                        <input type="text" name="attendance_id" placeholder="Employee Code" class="form-control">
                                     </div>
                                     <div class="form-group">
                                         <input type="submit" name="send" class="btn btn-muted">

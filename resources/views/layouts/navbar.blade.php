@@ -1,7 +1,8 @@
 <nav class="navbar navbar-light py-2 flex-md-nowrap">
-    <a class="navbar-brand mb-0 col-sm-3 col-md-2 mr-0" href="#">
+    <a class="navbar-brand mb-0 col-sm-3 col-md-2 mr-0" href="/">
     	<i class="mdi mdi-qrcode"></i>
     	Attendance
+        <small class="text-muted">dev</small>
     </a>
     <ul class="navbar-nav px-3">
     	@guest
