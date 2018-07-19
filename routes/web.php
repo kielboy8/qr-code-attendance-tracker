@@ -34,6 +34,9 @@ Route::post('/admin/employees/', 'QrCodeController@index');
 Route::get('/logout', 'LoginController@destroy');
 
 Route::get('/reader', 'ReaderController@index');
+
 Route::post('/reader/scan', 'ReaderController@scan');
+
 Route::post('/reader/employee', 'ReaderController@show');
+
 Route::post('/reader/login', 'ReaderController@login');
