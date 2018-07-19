@@ -14,20 +14,26 @@ class ScanController extends Controller
     }
 
     public function store() {
-    	$this->validate(request(), [
-			'attendance_id' => 'required'
-		]);
+		$employee = Employee::where('attendance_id', request('id'))->first();
 
-		$attendance = Employee::where('attendance_id', request('attendance_id'))->firstorFail();
-
-		if($attendance) {
-			Attendance::create([
-				'name' => $attendance->name,
-				'position' => $attendance->position,
-	            'attendance_id' => $attendance->attendance_id,
-				'contact_no' => $attendance->contact_no,
-			]);
+		if ($employee != null) {
+			if($employee) {
+				Attendance::create([
+					'name' => $employee->name,
+					'position' => $employee->position,
+		            'attendance_id' => $employee->attendance_id,
+					'contact_no' => $employee->contact_no,
+				]);
+			}
+			return response()->json([
+                'response' => 'valid',
+                'id' => $employee->id
+            ]);
 		}
+        else
+            return response()->json([
+                'response' => 'invalid',
+            ]);
 
 		return redirect('/');
     }

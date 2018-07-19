@@ -8,7 +8,7 @@
 
         <title>Reader</title>
 
-        <script type="text/javascript" src="{{ asset('js/instascan.min.js') }}"></script>
+       <script type="text/javascript" src="{{ asset('js/instascan.min.js') }}"></script>
     </head>
     <body>
         <video id="preview"></video>

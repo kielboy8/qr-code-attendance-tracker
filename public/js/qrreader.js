@@ -12,13 +12,13 @@ $(document).ready(function() {
 
         $.ajax({
             type: "POST",
-            url: "/reader/scan",
+            url: "/scan",
             data: {
                 id: content
             },
             success: function(data) {
                 if (data.response == 'valid')
-                    $.redirect('/reader/employee', {'id': data.id, '_token': $('meta[name="csrf-token"]').attr('content')});
+                    alert('Success!');
                 else
                     alert('Invalid QR Code!');
             }
