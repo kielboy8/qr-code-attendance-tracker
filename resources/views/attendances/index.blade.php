@@ -54,10 +54,10 @@
                                     <p class="text-muted"><small>{{ $attendance->position }}</small></p>
                                 </td>
                                 <td>
-                                    {{ $attendance->created_at->toDayDatetimeString() }}
+                                    {{ $attendance->time_in->toDayDatetimeString() }}
                                 </td>
                                 <td>
-                                    {{ $attendance->updated_at->toDayDatetimeString() }}
+                                    {{ $attendance->time_in->toDayDatetimeString() }}
                                 </td>
                                 <td>
                                     <i class="mdi mdi-account-edit h5"></i>

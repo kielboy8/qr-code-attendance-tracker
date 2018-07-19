@@ -6,7 +6,7 @@
         <div class="row">
             <div class="col"></div>
             <main role="main" class="col-5 ml-sm-auto pt-4 px-5 text-center">
-                <div class="card p-3 border-0 rounded-0 shadow-sm">
+                <div class="card px-3 py-2 border-0 bg-white shadow mb-3">
                     <div class="card-body px-5">
                         <div class="text-center mb-3">
                             <i class="mdi mdi-account-outline display-2 text-black-50"></i>

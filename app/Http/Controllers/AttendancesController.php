@@ -13,27 +13,27 @@ class AttendancesController extends Controller
     }
     
     public function index() {
-    	$attendances = Attendance::latest();
 
-    	$archives = Attendance::selectRaw('monthname(created_at) month, day(created_at) day, year(created_at) year')
+        $attendances = new Attendance;
+
+    	$archives = Attendance::selectRaw('monthname(time_in) month, day(time_in) day, year(time_in) year')
     		->groupBy('day')
-    		->orderByRaw('min(created_at) desc')
+    		->orderByRaw('min(time_in) desc')
     		->get();
 
     	if($month = request('month')) {
-    		$attendances->whereMonth('created_at', Carbon::parse($month)->month);
+    		$attendances->whereMonth('time_in', Carbon::parse($month)->month);
     	}
 
     	if($day = request('day')) {
-    		$attendances->whereDay('created_at', $day);
+    		$attendances->whereDay('time_in', $day);
     	}
 
     	if($year = request('year')) {
-    		$attendances->whereYear('created_at', $year);
+    		$attendances->whereYear('time_in', $year);
     	}
 
     	$attendances = $attendances->get();
-    	// SELECT monthname(created_at) month, day(created_at) day, year(created_at) FROM `attendances` GROUP BY day
 
     	return view('attendances.index', compact(['attendances', 'archives']));
     }

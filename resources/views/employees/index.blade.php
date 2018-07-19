@@ -6,7 +6,7 @@
     <div class="container-fluid">
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 ">
             <h1 class="h2">Employees</h1>
-            <button type="button" class="btn btn-primary rounded-0 shadow" data-toggle="modal" data-target="#createEmployee">
+            <button type="button" class="menu-toggle btn btn-primary rounded-0 shadow">
                 Add Employee
             </button>
         </div>
@@ -55,6 +55,11 @@
     </div>
 </main>
 
+<!-- Create Employee Sidebar -->
+<nav id="sideform-wrapper">
+    <div class="jumbotron"></div>
+</nav>
+
 <!-- Create Employee Modal -->
 <div class="modal fade" id="createEmployee" tabindex="-1" role="dialog" aria-labelledby="createEmployee" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -68,21 +73,17 @@
             <form action="/admin/employees/create" method="POST">
                 <div class="modal-body mx-5">
                     @csrf
-                    <div class="form-group">
-                        <label for="title">Name: </label>
-                        <input type="text" class="form-control" id="name" name="name">
+                    <div class="form-group pb-2">
+                        <input type="text" class="form-control py-2 rounded-0 border-top-0 border-left-0 border-right-0" id="name" name="name" placeholder="Name">
                     </div>
-                    <div class="form-group">
-                        <label for="title">Position: </label>
-                        <input type="text" class="form-control" id="position" name="position">
+                    <div class="form-group pb-2">
+                        <input type="text" class="form-control py-2 rounded-0 border-top-0 border-left-0 border-right-0" id="position" name="position" placeholder="Position">
                     </div>
-                    <div class="form-group">
-                        <label for="title">Email: </label>
-                        <input type="email" class="form-control" id="email" name="email">
+                    <div class="form-group pb-2">
+                        <input type="email" class="form-control py-2 rounded-0 border-top-0 border-left-0 border-right-0" id="email" name="email" placeholder="E-Mail">
                     </div>
-                    <div class="form-group">
-                        <label for="title">Contact Number: </label>
-                        <input type="number" class="form-control" id="contact_no" name="contact_no">
+                    <div class="form-group pb-2">
+                        <input type="number" class="form-control py-2 rounded-0 border-top-0 border-left-0 border-right-0" id="contact_no" name="contact_no" placeholder="Contact Number">
                     </div>
                 </div>
                 <div class="modal-footer">

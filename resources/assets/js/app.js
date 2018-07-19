@@ -20,3 +20,33 @@ Vue.component('example-component', require('./components/ExampleComponent.vue'))
 const app = new Vue({
     el: '#app'
 });
+
+(function($) {
+    "use strict"; // Start of use strict
+
+    // Closes the sidebar menu
+    $(".menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#sideform-wrapper").toggleClass("active");
+        $(".menu-toggle > .fa-bars, .menu-toggle > .fa-times").toggleClass("fa-bars fa-times");
+        $(this).toggleClass("active");
+    });
+
+    // Closes responsive menu when a scroll trigger link is clicked
+    $('#sideform-wrapper .js-scroll-trigger').click(function() {
+        $("#sideform-wrapper").removeClass("active");
+        $(".menu-toggle").removeClass("active");
+        $(".menu-toggle > .fa-bars, .menu-toggle > .fa-times").toggleClass("fa-bars fa-times");
+    });
+
+  // Scroll to top button appear
+    $(document).scroll(function() {
+        var scrollDistance = $(this).scrollTop();
+        if (scrollDistance > 100) {
+            $('.scroll-to-top').fadeIn();
+        } 
+        else {
+            $('.scroll-to-top').fadeOut();
+        }
+    });
+})(jQuery); // End of use strict

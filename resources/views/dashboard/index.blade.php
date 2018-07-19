@@ -18,11 +18,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-4">
-                <div class="card px-3 py-2 border-0 bg-white shadow mb-3">
-                </div>
-            </div>
-            <div class="col-8">
+            <div class="col">
                 <div class="card px-3 py-2 border-0 bg-white shadow mb-3">
                 </div>
             </div> 
