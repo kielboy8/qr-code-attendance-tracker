@@ -8,7 +8,9 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Laravel</title>
+    <title>
+        QR Attendance
+    </title>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
@@ -22,7 +24,12 @@
 <body class="bg-light">
     @include ('layouts.navbar')
 
-    @yield ('content')
+    <div class="container-fluid">
+        <div class="row">
+            @yield ('content')
+        </div>
+    </div>
+    
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>

@@ -10567,6 +10567,7 @@ body {
 
 .sidebar .nav-link.active {
   color: #e20000;
+  font-weight: 600;
 }
 
 /*
@@ -10594,6 +10595,14 @@ body {
 
 #acc-img {
   padding-right: 0 !important;
+}
+
+/*
+ *  Forms
+ */
+
+.form-control {
+  font-weight: 600;
 }
 
 /*
