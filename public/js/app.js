@@ -13917,6 +13917,31 @@ var app = new Vue({
     });
 })(jQuery); // End of use strict
 
+function readURL(input) {
+
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('#profile-img').attr('src', e.target.result);
+        };
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+$("#img-input").change(function () {
+    readURL(this);
+});
+
+$('table[data-form="deleteForm"]').on('click', '.form-delete', function (e) {
+    e.preventDefault();
+    var $form = $(this);
+    $('#confirm').modal({ backdrop: 'static', keyboard: false }).on('click', '#delete-btn', function () {
+        $form.submit();
+    });
+});
+
 /***/ }),
 /* 13 */
 /***/ (function(module, exports, __webpack_require__) {

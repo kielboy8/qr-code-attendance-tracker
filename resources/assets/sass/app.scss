@@ -21,6 +21,14 @@ body {
 }
 
 /*
+ *  Images
+ */
+
+.profile-img {
+  height: 200px;
+}
+
+/*
  * Sidebar
  */
 
@@ -75,7 +83,7 @@ body {
 
 #sideform-wrapper {
   position: fixed;
-  z-index: 2;
+  z-index: 1050;
   right: 0;
   width: 250;
   height: 100%;
@@ -169,7 +177,6 @@ body {
   }
 }
 
-
 /*
  * Navbar
  */
@@ -213,11 +220,36 @@ body {
   font-weight: 600;
 }
 
+.text-primary {
+  color: #e20000 !important;
+}
+
 .h1, .h2, .h3, .h4, .h5, .h6 {
   font-weight: 600;
 }
 
 .modal-title {
+  font-weight: 900;
+}
+
+.modal-header {
+  border-bottom: 2px solid #e9ecef;
+}
+
+.modal-footer {
+  border-top: 2px solid #e9ecef;
+}
+
+p {
+  font-weight: 600;
+}
+
+input, button, select, optgroup, textarea {
+  font-weight: 600;
+}
+
+label {
+  font-size: 0.9rem;
   font-weight: 600;
 }
 
@@ -245,6 +277,10 @@ body {
 
 .form-control {
   font-weight: 600;
+}
+
+.form-delete {
+  display: inline;
 }
 
 /*
@@ -278,4 +314,10 @@ body {
 
 .btn {
   font-weight: 600 !important;
+}
+
+.action-icon {
+  font-family: "Material Design Icons";
+  font-size: 1.25rem;
+  font-weight: 300 !important;
 }
