@@ -7,7 +7,7 @@
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 ">
             <h1 class="h2">Attendance</h1>
             <div class="dropdown mb-2 mb-md-0">
-                <a href="/admin/attendance" class="btn btn-primary rounded-0 shadow" role="button">
+                <a href="/admin/attendance" class="btn btn-primary shadow" role="button">
                     View All
                 </a>
             </div>

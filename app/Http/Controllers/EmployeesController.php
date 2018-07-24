@@ -50,6 +50,45 @@ class EmployeesController extends Controller
 		return redirect('/admin/employees');
 	}
 
+	public function update(Request $request) {
+		$request->validate([
+			'name' => 'required',
+			'position' => 'required',
+			'email' => 'required|email',
+			'contact_no' => 'required|numeric',
+			'profile-image' => 'image|nullable|max:2048'
+		]);
+
+		$employee = Employee::findOrFail($request->id);
+
+		if($request->hasFile('profile_image')) {
+			$filenameWithExt = $request->file('profile_image')->getClientOriginalName();
+			$filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+			$extension = $request->file('profile_image')->getClientOriginalExtension();
+			$filenameToStore = $filename . '_' . time() . '.' . $extension;
+			$path = $request->file('profile_image')->storeAs('public/employee/images', $filenameToStore);
+
+			$employee->update([
+	            'name' => $request->input('name'),
+	            'position' => $request->input('position'),
+				'email' => $request->input('email'),
+				'contact_no' => $request->input('contact_no'),
+				'profile_image' => $filenameToStore
+	        ]);
+		}
+		else {
+			$employee->update([
+	            'name' => $request->input('name'),
+	            'position' => $request->input('position'),
+				'email' => $request->input('email'),
+				'contact_no' => $request->input('contact_no'),
+	        ]);
+		}
+
+		
+		return redirect('/admin/employees');
+	}
+
 	public function delete(Employee $employee) {
 		$employee->delete();
 		return back();

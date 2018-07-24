@@ -1,6 +1,6 @@
 
 // Fonts
-@import url("https://fonts.googleapis.com/css?family=Nunito:400,600,900");
+@import url("https://fonts.googleapis.com/css?family=Nunito:400,600,800");
 
 // Variables
 @import "variables";
@@ -185,7 +185,7 @@ body {
   padding-top: .75rem;
   padding-bottom: .75rem;
   font-size: 1.3rem;
-  font-weight: 600;
+  font-weight: 800;
 }
 
 .navbar .form-control {
@@ -229,7 +229,7 @@ body {
 }
 
 .modal-title {
-  font-weight: 900;
+  font-weight: 800;
 }
 
 .modal-header {
@@ -256,6 +256,10 @@ label {
 /*
  * Table
  */
+
+.table thead th {
+  font-weight: 800;
+}
 
 .table th, .table td {
   padding: 1rem;
@@ -320,4 +324,8 @@ label {
   font-family: "Material Design Icons";
   font-size: 1.25rem;
   font-weight: 300 !important;
+}
+
+#editEmployeeBtn {
+  margin-right: 1px;
 }

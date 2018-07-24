@@ -6,8 +6,7 @@
     <div class="container-fluid">
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 ">
             <h1 class="h2">Employees</h1>
-            <button type="button" class="btn btn-primary rounded-0 shadow" data-toggle="modal" data-target="#createEmployee">
-            {{-- <button type="button" class="menu-toggle btn btn-primary rounded-0 shadow">  --}}
+            <button type="button" class="btn btn-primary shadow" data-toggle="modal" data-target="#createEmployee">
                 Add Employee
             </button>
         </div>
@@ -40,10 +39,10 @@
                                 <td>{{ $employee->attendance_id }}</td>
                                 <td>{{ $employee->created_at->toDayDatetimeString() }}</td>
                                 <td>
-                                    <button class="btn btn-sm btn-primary shadow action-icon" title="Edit Employee">
+                                    <button type="button"  id="editEmployeeBtn" class="btn btn-sm btn-primary shadow action-icon" data-id="{{ $employee->id }}" data-profile-image="{{ $employee->profile_image }}" data-name="{{ $employee->name }}" data-position="{{ $employee->position }}" data-attendance-id="{{ $employee->attendance_id }}" data-email="{{ $employee->email }}" data-contact-no="{{ $employee->contact_no }}" data-toggle="modal" data-target="#editEmployee" title="Edit Employee">
                                         &#xf6bb;
                                     </button>
-                                    <button id="{{$employee->attendance_id}}" class="action-btn btn-view btn btn-sm btn-primary  shadow action-icon" data-toggle="modal" data-target="#QrModal" title="View Employee">
+                                    <button type="button" id="viewEmployeeBtn" class="action-btn btn-view btn btn-sm btn-primary shadow action-icon" data-id="{{ $employee->id }}" data-profile-image="{{ $employee->profile_image }}" data-name="{{ $employee->name }}" data-position="{{ $employee->position }}" data-attendance-id="{{ $employee->attendance_id }}" data-email="{{ $employee->email }}" data-contact-no="{{ $employee->contact_no }}"  data-toggle="modal" data-target="#viewEmployee" title="View Employee">
                                         &#xf6cf;
                                     </button>
                                     <form method="POST" action="/admin/employees/delete/{{ $employee->id }}" class="form-delete">
@@ -62,5 +61,5 @@
     </div>
 </main>
 
-@include ('modals.employees')
+@include ('employees.modals')
 @endsection
