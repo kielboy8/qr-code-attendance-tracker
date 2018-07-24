@@ -7,7 +7,7 @@
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 ">
             <h1 class="h2">Attendance</h1>
             <div class="dropdown mb-2 mb-md-0">
-                <a href="/admin/attendance" class="btn btn-primary rounded-0 shadow" role="button">
+                <a href="/admin/attendance" class="btn btn-primary shadow" role="button">
                     View All
                 </a>
             </div>
@@ -15,7 +15,7 @@
         <div class="row">
             <div class="col-3">
                 <div class="card px-3 py-2 border-0 bg-white shadow mb-3">
-                    <table class="table table-borderless border-top-0">
+                    <table class="table border-top-0">
                         <thead>
                             <tr>
                                 <th>Date</th>
@@ -25,7 +25,7 @@
                             @foreach ($archives as $archive)
                             <tr>
                                 <td>
-                                    <a href="/admin/attendance?month={{ $archive->month }}&day={{ $archive->day }}&year={{ $archive->year }}" class="mb-0 pb-0">
+                                    <a href="/admin/attendance?month={{ $archive->month }}&day={{ $archive->day }}&year={{ $archive->year }}" class="mb-0 pb-0 lead">
                                         {{ $archive->month . ' ' . $archive->day . ', ' . $archive->year }}
                                     </a>
                                 </td>

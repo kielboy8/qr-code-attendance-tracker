@@ -1,6 +1,6 @@
 $(document).ready(function() {
     $(".btn-view").click(function(event) {
-        var id = $(this).attr("id");
+        var id = $(this).data("attendanceId");
 
         event.preventDefault();
 

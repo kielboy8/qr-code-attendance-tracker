@@ -25,10 +25,15 @@ Route::get('/admin/employees', 'EmployeesController@index');
 
 Route::post('/admin/employees/create', 'EmployeesController@store');
 
+Route::patch('/admin/employees/update', 'EmployeesController@update');
+
+Route::delete('/admin/employees/delete/{employee}', 'EmployeesController@delete');
+
+Route::post('/admin/employees/', 'QrCodeController@index');
+
 Route::get('/admin/attendance', 'AttendancesController@index');
 
 Route::get('/admin/notifications', 'NotificationsController@index');
 
-Route::post('/admin/employees/', 'QrCodeController@index');
 
 Route::get('/logout', 'LoginController@destroy');

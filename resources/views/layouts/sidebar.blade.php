@@ -1,4 +1,4 @@
-<nav class="col-2 d-none d-md-block bg-light sidebar sidebar-sticky pl-3">
+<nav class="col-2 d-none d-md-block bg-light sidebar sidebar-sticky pl-4">
     <div class="sidebar-sticky pt-3">
         <ul class="nav flex-column">
             <li class="nav-item pb-3">

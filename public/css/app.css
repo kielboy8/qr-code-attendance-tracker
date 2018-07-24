@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito:400,600,900);/*!
+@import url(https://fonts.googleapis.com/css?family=Nunito:400,600,800);/*!
  * Bootstrap v4.1.2 (https://getbootstrap.com/)
  * Copyright 2011-2018 The Bootstrap Authors
  * Copyright 2011-2018 Twitter, Inc.
@@ -10482,6 +10482,14 @@ body {
 }
 
 /*
+ *  Images
+ */
+
+.profile-img {
+  height: 200px;
+}
+
+/*
  * Sidebar
  */
 
@@ -10538,7 +10546,7 @@ body {
 
 #sideform-wrapper {
   position: fixed;
-  z-index: 2;
+  z-index: 1050;
   right: 0;
   width: 250;
   height: 100%;
@@ -10633,7 +10641,7 @@ body {
   padding-top: .75rem;
   padding-bottom: .75rem;
   font-size: 1.3rem;
-  font-weight: 600;
+  font-weight: 800;
 }
 
 .navbar .form-control {
@@ -10674,6 +10682,10 @@ body {
   font-weight: 600;
 }
 
+.text-primary {
+  color: #e20000 !important;
+}
+
 .h1,
 .h2,
 .h3,
@@ -10684,12 +10696,41 @@ body {
 }
 
 .modal-title {
+  font-weight: 800;
+}
+
+.modal-header {
+  border-bottom: 2px solid #e9ecef;
+}
+
+.modal-footer {
+  border-top: 2px solid #e9ecef;
+}
+
+p {
+  font-weight: 600;
+}
+
+input,
+button,
+select,
+optgroup,
+textarea {
+  font-weight: 600;
+}
+
+label {
+  font-size: 0.9rem;
   font-weight: 600;
 }
 
 /*
  * Table
  */
+
+.table thead th {
+  font-weight: 800;
+}
 
 .table th,
 .table td {
@@ -10712,6 +10753,10 @@ body {
 
 .form-control {
   font-weight: 600;
+}
+
+.form-delete {
+  display: inline;
 }
 
 /*
@@ -10750,5 +10795,15 @@ body {
 
 .btn {
   font-weight: 600 !important;
+}
+
+.action-icon {
+  font-family: "Material Design Icons";
+  font-size: 1.25rem;
+  font-weight: 300 !important;
+}
+
+#editEmployeeBtn {
+  margin-right: 1px;
 }
 
