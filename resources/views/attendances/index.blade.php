@@ -41,6 +41,7 @@
                         <thead>
                             <tr>
                                 <th>Employee Name</th>
+                                <th>Contact Number</th>
                                 <th>Time In</th>
                                 <th>Time Out</th>
                                 <th>Actions</th>
@@ -54,10 +55,13 @@
                                     <p class="text-muted"><small>{{ $attendance->position }}</small></p>
                                 </td>
                                 <td>
-                                    {{ $attendance->created_at->toDayDatetimeString() }}
+                                    {{ $attendance->contact_no }}
                                 </td>
                                 <td>
-                                    {{ $attendance->updated_at->toDayDatetimeString() }}
+                                    {{ $attendance->time_in }}
+                                </td>
+                                <td>
+                                    {{ $attendance->time_out }}
                                 </td>
                                 <td>
                                     <i class="mdi mdi-account-edit h5"></i>

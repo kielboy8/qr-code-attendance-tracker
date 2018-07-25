@@ -35,5 +35,4 @@ Route::get('/admin/attendance', 'AttendancesController@index');
 
 Route::get('/admin/notifications', 'NotificationsController@index');
 
-
 Route::get('/logout', 'LoginController@destroy');
