@@ -16,25 +16,38 @@ class ScanController extends Controller
     public function store() {
 		$employee = Employee::where('attendance_id', request('id'))->first();
 
-		if ($employee != null) {
-			if($employee) {
-				Attendance::create([
-					'name' => $employee->name,
-					'position' => $employee->position,
-		            'attendance_id' => $employee->attendance_id,
-					'contact_no' => $employee->contact_no,
-				]);
-			}
+		if ($employee) {
+            $date_time = Carbon::now();
+            $date_now = $date_time->format('Y-m-d');
+            $time_now = $date_time->format('H:i:s');
+            $attendance = Attendance::where('attendance_id', request('id'))
+                                    ->where('date', $date_now)->first();
+
+            if ($attendance && $attendance->time_in) {
+                $attendance->time_out = $time_now;
+                $attendance->save();
+            }
+            else {
+                Attendance::create([
+                    'name' => $employee->name,
+    				'position' => $employee->position,
+                    'attendance_id' => $employee->attendance_id,
+    				'contact_no' => $employee->contact_no,
+                    'date' => $date_now,
+                    'time_in' => $time_now,
+                    'time_out' => null
+                ]);
+            }
+
 			return response()->json([
                 'response' => 'valid',
                 'id' => $employee->id
             ]);
 		}
-        else
+        else {
             return response()->json([
                 'response' => 'invalid',
             ]);
-
-		return redirect('/');
+        }
     }
 }
