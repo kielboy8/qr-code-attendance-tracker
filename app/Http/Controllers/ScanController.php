@@ -28,7 +28,7 @@ class ScanController extends Controller
                 $attendance->save();
             }
             else {
-                Attendance::create([
+                $attendance = Attendance::create([
                     'name' => $employee->name,
     				'position' => $employee->position,
                     'attendance_id' => $employee->attendance_id,
@@ -41,12 +41,13 @@ class ScanController extends Controller
 
 			return response()->json([
                 'response' => 'valid',
-                'id' => $employee->id
+                'employee' => $employee,
+                'attendance' => $attendance
             ]);
 		}
         else {
             return response()->json([
-                'response' => 'invalid',
+                'response' => 'Invalid QR code! Employee not found.'
             ]);
         }
     }
