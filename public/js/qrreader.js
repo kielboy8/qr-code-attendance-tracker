@@ -1,9 +1,7 @@
 $(document).ready(function() {
     let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
-    scanner.addListener('scan', function (content) {
-        // Add QR Content validation
-        // if (content) { }
 
+    scanner.addListener('scan', function (content) {
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -31,9 +29,11 @@ $(document).ready(function() {
                         $("#emp-out").html("Time out:");
                         $("#emp-img").html("<i class=\"mdi mdi-account-circle display-1 h1\"></i>");
                     }, 5000);
+
+                    new Audio("sounds/success.mp3").play();
                 }
                 else {
-                    alert(data.response);
+                    new Audio("sounds/fail.mp3").play();
                 }
             }
         });
