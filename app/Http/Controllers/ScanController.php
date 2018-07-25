@@ -3,18 +3,26 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Notification;
+use Illuminate\Notifications\Notifiable;
+
+use App\Notifications\Overtime;
+use App\User;
 use App\Employee;
 use App\Attendance;
 use Carbon\Carbon;
 
 class ScanController extends Controller
 {
+    use Notifiable;
+
     public function create () {
     	return view('scan.create');
     }
 
     public function store() {
 		$employee = Employee::where('attendance_id', request('id'))->first();
+        $user = User::where('id', 1)->get();
 
 		if ($employee) {
             $date_time = Carbon::now();
@@ -24,10 +32,16 @@ class ScanController extends Controller
                                     ->where('date', $date_now)->first();
 
             if ($attendance && $attendance->time_in) {
+                Notification::send($user, new Overtime());
                 $attendance->time_out = $time_now;
                 $attendance->save();
+                // $totalTime = Attendance::selectRaw('(time_out - time_in) difference')->where('attendance_id', request('id'))->first()->difference;
+                // if($totalTime > 32400) {
+                //     auth()->user()
+                // }
             }
             else {
+                Notification::send($user, new Overtime());
                 Attendance::create([
                     'name' => $employee->name,
     				'position' => $employee->position,

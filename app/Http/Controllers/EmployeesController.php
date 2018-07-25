@@ -4,11 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+
+use App\User;
 use App\Employee;
 use Carbon\Carbon;
 
 class EmployeesController extends Controller 
 {
+
     public function __construct() {
         $this->middleware('auth');
     }
@@ -46,6 +49,9 @@ class EmployeesController extends Controller
 			'contact_no' => $request->input('contact_no'),
 			'profile_image' => $filenameToStore
         ]);
+
+        $user = User::where('id', 1)->get();
+		Notification::send($user, new Overtime());
 
 		return redirect('/admin/employees');
 	}
