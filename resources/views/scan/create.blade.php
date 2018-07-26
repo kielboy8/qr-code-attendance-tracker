@@ -24,11 +24,10 @@
                         <main role="main" class="col ml-sm-auto pt-1 px-5">
                             <div class="card p-3 border-0 rounded-0 bg-white shadow">
                                 <div class="card-body p-0 text-center">
-                                    <video id="preview"></video>
+                                    {{-- <video id="preview"></video> --}}
                                     
-                                    <!-- 
+                                    
                                     <form action="/scan" method="POST">
-                                        <video id="preview"></video>
                                         @csrf
                                         <div class="form-group">
                                             <input type="text" name="attendance_id" placeholder="Employee Code" class="form-control">
@@ -37,7 +36,7 @@
                                             <input type="submit" name="send" class="btn btn-muted">
                                         </div>
                                     </form>
-                                    -->
+                                   
                                 </div>
                             </div>
                         </main>

@@ -20,19 +20,20 @@ class ScanController extends Controller
     	return view('scan.create');
     }
 
-    public function store() {
-		$employee = Employee::where('attendance_id', request('id'))->first();
+    public function store(Request $request) {
+		$employee = Employee::where('attendance_id', request('attendance_id'))->first();
         $user = User::where('id', 1)->get();
 
 		if ($employee) {
             $date_time = Carbon::now();
             $date_now = $date_time->format('Y-m-d');
             $time_now = $date_time->format('H:i:s');
-            $attendance = Attendance::where('attendance_id', request('id'))
+            $attendance = Attendance::where('attendance_id', request('attendance_id'))
                                     ->where('date', $date_now)->first();
 
             if ($attendance && $attendance->time_in) {
-                Notification::send($user, new Overtime());
+                $id = $request->attendance_id;
+                Notification::send($user, new Overtime($id));
                 $attendance->time_out = $time_now;
                 $attendance->save();
                 // $totalTime = Attendance::selectRaw('(time_out - time_in) difference')->where('attendance_id', request('id'))->first()->difference;
@@ -53,15 +54,16 @@ class ScanController extends Controller
                 ]);
             }
 
-			return response()->json([
-                'response' => 'valid',
-                'id' => $employee->id
-            ]);
+			// return response()->json([
+   //              'response' => 'valid',
+   //              'id' => $employee->id
+   //          ]);
 		}
-        else {
-            return response()->json([
-                'response' => 'invalid',
-            ]);
-        }
+        // else {
+        //     return response()->json([
+        //         'response' => 'invalid',
+        //     ]);
+        // }
+        return redirect('/');
     }
 }

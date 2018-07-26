@@ -4,9 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Notification;
+use Illuminate\Notifications\Notifiable;
 
 use App\User;
 use App\Employee;
+use App\Notifications\Overtime;
 use Carbon\Carbon;
 
 class EmployeesController extends Controller 
@@ -91,7 +94,6 @@ class EmployeesController extends Controller
 	        ]);
 		}
 
-		
 		return redirect('/admin/employees');
 	}
 

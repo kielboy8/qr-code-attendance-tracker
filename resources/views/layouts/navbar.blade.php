@@ -20,9 +20,9 @@
                     {{ count(auth()->user()->unreadNotifications) }}
                 </a>
                 <div class="dropdown-menu dropdown-menu-right shadow border-0 px-3 py-2" aria-labelledby="notificationsIcon">
-                    <p class="dropdown-header border-bottom pb-2 pt-1 mb-2">Notifications</p>
+                    <p class="dropdown-header border-bottom py-2 mb-2 px-2">Notifications</p>
                     @foreach(auth()->user()->unreadNotifications as $notification)
-                    <a class="dropdown-item" href="#">{{ $notification->type }}</a>
+                    @include('notifications.' . snake_case(class_basename($notification->type)))
                     @endforeach
                 </div>
             </li>
