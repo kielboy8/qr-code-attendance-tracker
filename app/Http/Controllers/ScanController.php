@@ -22,7 +22,7 @@ class ScanController extends Controller
 
     public function store(Request $request) {
 		$employee = Employee::where('attendance_id', $request->id)->first();
-        $user = User::where('id', 1)->get();
+    $user = User::find(1);
 
 		if ($employee) {
             $date_time = Carbon::now();
@@ -44,25 +44,25 @@ class ScanController extends Controller
                 Notification::send($user, new Overtime($employee));
                 Attendance::create([
                     'name' => $employee->name,
-    				'position' => $employee->position,
+    				        'position' => $employee->position,
                     'attendance_id' => $employee->attendance_id,
-    				'contact_no' => $employee->contact_no,
+    				        'contact_no' => $employee->contact_no,
                     'date' => $date_now,
                     'time_in' => $time_now,
                     'time_out' => null
                 ]);
             }
 
-			return response()->json([
+			  return response()->json([
                 'response' => 'valid',
-                'id' => $employee->id
+                'employee' => $employee,
+                'attendance' => $attendance
             ]);
-		}
+		    }
         else {
             return response()->json([
-                'response' => 'invalid',
+                'response' => 'Invalid QR code! Employee not found.'
             ]);
-        }
-        // return redirect('/');
+        } 
     }
 }
