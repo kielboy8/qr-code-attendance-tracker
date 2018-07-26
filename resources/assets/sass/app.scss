@@ -28,6 +28,11 @@ body {
   height: 200px;
 }
 
+.profile-icon {
+  width: 50px;
+  height: 50px;
+}
+
 /*
  * Sidebar
  */
@@ -213,8 +218,16 @@ body {
  * Utilities
  */
 
-.border-top { border-top: 1px solid #e5e5e5; }
-.border-bottom { border-bottom: 1px solid #e5e5e5; }
+.border-top { border-top: 2px solid #e5e5e5 !important; }
+.border-bottom { border-bottom: 2px solid #e5e5e5 !important; }
+
+.dropdown-header {
+  font-weight: 800;
+}
+
+.dropdown-item {
+  font-weight: 600;
+}
 
 .lead {
   font-weight: 600;
