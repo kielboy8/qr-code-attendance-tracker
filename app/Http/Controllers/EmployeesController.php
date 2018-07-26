@@ -53,9 +53,6 @@ class EmployeesController extends Controller
 			'profile_image' => $filenameToStore
         ]);
 
-        $user = User::where('id', 1)->get();
-		Notification::send($user, new Overtime());
-
 		return redirect('/admin/employees');
 	}
 

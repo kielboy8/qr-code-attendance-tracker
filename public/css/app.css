@@ -10687,6 +10687,10 @@ body {
   font-weight: 800;
 }
 
+.dropdown-item {
+  font-weight: 600;
+}
+
 .lead {
   font-weight: 600;
 }

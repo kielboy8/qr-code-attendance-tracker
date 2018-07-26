@@ -13,15 +13,15 @@ class Overtime extends Notification
 {
     use Queueable;
 
-    public $id;
+    public $employee;
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($id)
+    public function __construct($employee)
     {
-        $this->id = $id;
+        $this->employee = $employee;
     }
 
     /**
@@ -43,7 +43,7 @@ class Overtime extends Notification
      */
     public function toDatabase($notifiable)
     {   
-        $employee = Employee::where('attendance_id', $this->id)->first();
+        $employee = $this->employee;
         return [
             'attendanceCreated' => Carbon::now(),
             'employeeName' => $employee->name

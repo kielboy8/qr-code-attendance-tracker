@@ -1,3 +1,3 @@
 <a class="dropdown-item px-2" href="#">
-	{{ $notification }}
+	{{ $notification->data['employeeName'] }} has went overtime.
 </a>
