@@ -14,6 +14,8 @@ class AttendancesController extends Controller
     
     public function index() {
         $attendances = new Attendance;
+        // $attendance = Attendance::selectRaw('(time_out - time_in) difference')
+        // dd($attendances->difference)
 
     	$archives = Attendance::selectRaw('monthname(date) month, day(date) day, year(date) year')
     		->groupBy('day')

@@ -29,7 +29,7 @@
                                 <td>{{ $employee->id }}</td>
                                 <td>
                                     <div class="d-flex flex-row align-items-start">
-                                        <img src="/storage/employee/images/{{ $employee->profile_image }}" style="width: 50px" class="mr-3 rounded-circle shadow">
+                                        <img src="/storage/employee/images/{{ $employee->profile_image }}" class="mr-3 profile-icon rounded-circle shadow">
                                         <div class="d-flex flex-column">
                                             <p class="mb-0 lead">{{ $employee->name }}</p>
                                             <p class="mt-0 text-muted"><small>{{ $employee->position }}</small></p>
