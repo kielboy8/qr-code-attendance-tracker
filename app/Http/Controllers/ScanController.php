@@ -32,16 +32,14 @@ class ScanController extends Controller
                                     ->where('date', $date_now)->first();
 
             if ($attendance && $attendance->time_in) {
-                Notification::send($user, new Overtime($employee));
                 $attendance->time_out = $time_now;
                 $attendance->save();
-                // $totalTime = Attendance::selectRaw('(time_out - time_in) difference')->where('attendance_id', request('id'))->first()->difference;
-                // if($totalTime > 32400) {
-                //     auth()->user()
-                // }
+                $totalTime = Attendance::selectRaw('(time_out - time_in) difference')->where('attendance_id', request('id'))->first()->difference;
+                if($totalTime > 32400) {
+                    Notification::send($user, new Overtime($employee));
+                }
             }
             else {
-                Notification::send($user, new Overtime($employee));
                 Attendance::create([
                     'name' => $employee->name,
     				'position' => $employee->position,

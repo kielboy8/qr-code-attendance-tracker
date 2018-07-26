@@ -104,3 +104,10 @@ $('table[data-form="deleteForm"]').on('click', '.form-delete', function(e) {
             $form.submit();
         });
 });
+
+// Notif Alert
+$(function () {
+    $('#markAsRead').click(function() {
+        $.get('/markAsRead')
+    })
+})

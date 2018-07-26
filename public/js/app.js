@@ -13980,6 +13980,13 @@ $('table[data-form="deleteForm"]').on('click', '.form-delete', function (e) {
     });
 });
 
+// Notif Alert
+$(function () {
+    $('#markAsRead').click(function () {
+        $.get('/markAsRead');
+    });
+});
+
 /***/ }),
 /* 13 */
 /***/ (function(module, exports, __webpack_require__) {
