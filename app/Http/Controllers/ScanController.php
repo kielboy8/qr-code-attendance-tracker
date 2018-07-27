@@ -40,6 +40,7 @@ class ScanController extends Controller
                 }
             }
             else {
+                Notification::send($user, new Overtime($employee));
                 $attendance = Attendance::create([
                     'name' => $employee->name,
     				'position' => $employee->position,
