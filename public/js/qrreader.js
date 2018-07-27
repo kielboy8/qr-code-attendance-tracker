@@ -16,6 +16,10 @@ $(document).ready(function() {
             },
             success: function(data) {
                 if (data.response == 'valid') {
+                    alert("Success!");
+                    alert(data.attendance.time_in);
+                    alert(data.attendance.time_out);
+
                     $("#emp-name").html(data.employee.name);
                     $("#emp-pos").html(data.employee.position);
                     $("#emp-in").html("Time in: " + data.attendance.time_in);
