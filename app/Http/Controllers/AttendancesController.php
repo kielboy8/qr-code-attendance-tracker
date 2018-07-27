@@ -23,15 +23,15 @@ class AttendancesController extends Controller
     		->get();
 
     	if($month = request('month')) {
-    		$attendances->whereMonth('date', Carbon::parse($month)->month);
+    		$attendances = $attendances->whereMonth('date', Carbon::parse($month)->month);
     	}
 
     	if($day = request('day')) {
-    		$attendances->whereDay('date', $day);
+    		$attendances = $attendances->whereDay('date', $day);
     	}
 
     	if($year = request('year')) {
-    		$attendances->whereYear('date', $year);
+    		$attendances = $attendances->whereYear('date', $year);
     	}
 
     	$attendances = $attendances->get();
