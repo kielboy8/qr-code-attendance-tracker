@@ -36,3 +36,7 @@ Route::get('/admin/attendance', 'AttendancesController@index');
 Route::get('/admin/notifications', 'NotificationsController@index');
 
 Route::get('/logout', 'LoginController@destroy');
+
+Route::get('/markAsRead', function () {
+	auth()->user()->unreadNotifications->markAsRead();
+});
