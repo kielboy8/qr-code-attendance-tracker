@@ -45,7 +45,7 @@ class ScanController extends Controller
     				'position' => $employee->position,
                     'attendance_id' => $employee->attendance_id,
     				'contact_no' => $employee->contact_no,
-                    'created_at' => $date_now,
+                    'date' => $date_now,
                     'time_in' => $time_now,
                     'time_out' => null
                 ]);
