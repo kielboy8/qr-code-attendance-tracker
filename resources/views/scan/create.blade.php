@@ -3,15 +3,15 @@
 @section ('content')
 <div class="container-fluid">
     <div class="row">
-        <main role="main" class="col ml-sm-auto px-5 mt-5">
+        <main role="main" class="col ml-sm-auto px-5 pr-5 pl-5 mt-3">
             <div class="container-fluid">
                 <div class="d-flex flex-row align-items-center">
                     <div class="col"></div>
                     <div class="col-3">
                         <div class="card p-3 border-0 rounded-0 bg-white shadow">
                             <div class="card-body pt-5">
-                                <div class="user-img text-center" id="emp-img">
-                                    <i class="mdi mdi-account-circle display-1 h1"></i>
+                                <div class="text-center">
+                                    <img src="/storage/employee/images/noimage.jpg" class="profile-img img-fluid rounded-circle text-center" id="emp-img">
                                 </div>
                                 <h1 class="card-title h4 mt-4 text-center" id="emp-name">Employee Name</h1>
                                 <p class="text-muted text-center"><small id="emp-pos">Employee Position</small></p>

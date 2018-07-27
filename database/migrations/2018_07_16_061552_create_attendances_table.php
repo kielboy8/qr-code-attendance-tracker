@@ -19,7 +19,7 @@ class CreateAttendancesTable extends Migration
             $table->string('position');
             $table->string('attendance_id');
             $table->string('contact_no');
-            $table->date('date');
+            $table->date('created_at');
             $table->time('time_in');
             $table->time('time_out')->nullable();
         });
