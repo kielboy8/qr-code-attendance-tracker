@@ -17,21 +17,21 @@ class AttendancesController extends Controller
         // $attendance = Attendance::selectRaw('(time_out - time_in) difference')
         // dd($attendances->difference)
 
-    	$archives = Attendance::selectRaw('monthname(created_at) month, day(created_at) day, year(created_at) year')
+    	$archives = Attendance::selectRaw('monthname(date) month, day(created_at) day, year(created_at) year')
     		->groupBy('day')
-    		->orderByRaw('min(created_at) desc')
+    		->orderByRaw('min(date) desc')
     		->get();
 
     	if($month = request('month')) {
-    		$attendances->whereMonth('created_at', Carbon::parse($month)->month);
+    		$attendances = $attendances->whereMonth('date', Carbon::parse($month)->month);
     	}
 
     	if($day = request('day')) {
-    		$attendances->whereDay('created_at', $day);
+    		$attendances = $attendances->whereDay('date', $day);
     	}
 
     	if($year = request('year')) {
-    		$attendances->whereYear('created_at', $year);
+    		$attendances = $attendances->whereYear('date', $year);
     	}
 
     	$attendances = $attendances->get();

@@ -29,7 +29,7 @@ class ScanController extends Controller
             $date_now = $date_time->format('Y-m-d');
             $time_now = $date_time->format('H:i:s');
             $attendance = Attendance::where('attendance_id', $request->id)
-                                    ->where('created_at', $date_now)->first();
+                                    ->where('date', $date_now)->first();
 
             if ($attendance && $attendance->time_in) {
                 $attendance->time_out = $time_now;
