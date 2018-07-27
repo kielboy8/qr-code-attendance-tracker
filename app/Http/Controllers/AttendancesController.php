@@ -17,7 +17,7 @@ class AttendancesController extends Controller
         // $attendance = Attendance::selectRaw('(time_out - time_in) difference')
         // dd($attendances->difference)
 
-    	$archives = Attendance::selectRaw('monthname(date) month, day(created_at) day, year(created_at) year')
+    	$archives = Attendance::selectRaw('monthname(date) month, day(date) day, year(date) year')
     		->groupBy('day')
     		->orderByRaw('min(date) desc')
     		->get();
