@@ -1,4 +1,6 @@
 require('./bootstrap');
+require('moment');
+require('fullcalendar');
 
 // To show image upon attaching it to the input
 function createEmployeeImg(input) {
@@ -89,4 +91,32 @@ $(function () {
     $('#markAsRead').click(function() {
         $.get('/markAsRead')
     })
+})
+
+/*****************************************
+ Fullcalendar
+*****************************************/
+$(() => {
+    if ($('#calendar')) {
+        $('#calendar').fullCalendar({
+            height: 600,
+            header: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'month,basicWeek,basicDay'
+            },
+            businessHours: {
+                dow: [1, 2, 3, 4, 5, 6]
+            },
+            showNonCurrentDates: false,
+            dayRender: function(date, cell) {
+                // something here for content
+            },
+            dayClick: function(date, jsEvent, view) {
+                $('#calendar').fullCalendar('select', date);
+                window.location.href = "/admin/attendance?month=" + date.format("MMMM") +
+                                        "&day=" + date.format("DD") + "&year=" + date.format("YYYY");
+            }
+        });
+    }
 })

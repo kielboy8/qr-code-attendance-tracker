@@ -6,5 +6,5 @@ class Attendance extends Model
 {
     public $timestamps = false;
 
-    public $guarded = [];
+    protected $guarded = [];
 }

@@ -8,6 +8,9 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+// FullCalendar
+@import '~fullcalendar/dist/fullcalendar.min.css';
+
 body {
   font-size: .875rem;
   background-color: #fff !important;
@@ -341,4 +344,20 @@ label {
 
 #editEmployeeBtn {
   margin-right: 1px;
+}
+
+#calendar {
+    margin: 20px 0 20px 0;
+}
+
+div.calendar-hide {
+    display: none;
+}
+
+.fc-past {
+    //background-color: #E5E5E5;
+}
+
+.fc-today {
+    //background-color: #FAFAD2 !important;
 }
