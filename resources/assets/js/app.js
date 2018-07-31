@@ -1,6 +1,7 @@
 require('./bootstrap');
 require('moment');
 require('fullcalendar');
+require('popper.js');
 
 // To show image upon attaching it to the input
 function createEmployeeImg(input) {
@@ -36,7 +37,6 @@ $("#edit-img-input").change(function() {
 $('#viewEmployee').on('show.bs.modal', function(event) {
     var button = $(event.relatedTarget)
 
-    var id = button.data('id')
     var profileImage = button.data('profileImage')
     var name = button.data('name')
     var position = button.data('position')
@@ -64,7 +64,6 @@ $('#editEmployee').on('show.bs.modal', function(event) {
     var position = button.data('position')
     var email = button.data('email')
     var contactNo = button.data('contactNo')
-    var attendanceId = button.data('attendanceId')
 
     var modal = $(this)
 
@@ -93,13 +92,12 @@ $(function () {
     })
 })
 
-/*****************************************
- Fullcalendar
-*****************************************/
+/************************************
+ *  Attendance Page - FullCalendar  *
+ ************************************/
 $(() => {
     if ($('#calendar')) {
         $('#calendar').fullCalendar({
-            height: 600,
             header: {
                 left: 'prev,next today',
                 center: 'title',
@@ -109,13 +107,34 @@ $(() => {
                 dow: [1, 2, 3, 4, 5, 6]
             },
             showNonCurrentDates: false,
-            dayRender: function(date, cell) {
-                // something here for content
+            events: {
+                url: "/admin/attendance/fetch",
+                type: "POST",
+                data: {
+                    '_token': $('meta[name="csrf-token"]').attr('content')
+                }
             },
-            dayClick: function(date, jsEvent, view) {
+            dayClick: function(date) {
                 $('#calendar').fullCalendar('select', date);
                 window.location.href = "/admin/attendance?month=" + date.format("MMMM") +
                                         "&day=" + date.format("DD") + "&year=" + date.format("YYYY");
+            },
+            eventRender: function(event, element) {
+                element.popover({
+                    title: event.title,
+                    content: event.description,
+                    trigger: 'hover',
+                    placement: 'top',
+                    container: 'body'
+                });
+            },
+            views: {
+                month: {
+                    displayEventTime: false
+                },
+                basicDay: {
+                    displayEventEnd: true
+                }
             }
         });
     }
