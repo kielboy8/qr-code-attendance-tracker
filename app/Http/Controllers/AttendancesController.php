@@ -32,22 +32,23 @@ class AttendancesController extends Controller
     	return view('attendances.index', compact(['attendances', 'today']));
     }
 
-	public function fetch()
+	public function events()
 	{
-		$attendances = Attendance::all();
-		$attendances = $attendances->map(function($item) {
-			$formatted_time_in = Carbon::createFromTimeString($item->time_in);
-			$late = $formatted_time_in->gt(Carbon::createFromTimeString("08:30:59"));
+		$start = Carbon::parse(request('start'));
+		$end = Carbon::parse(request('end'))->subDay();
+		$attendances = Attendance::whereBetween('date', [$start, $end])->get();
 
-			$formatted_time_in = $formatted_time_in->format('h:i A');
-			$formatted_time_out = Carbon::createFromTimeString($item->time_out)->format('h:i A');
+		$attendances = $attendances->map(function($item) {
+			$in = Carbon::parse($item->time_in);
+			$out = Carbon::parse($item->time_out);
+			$late = $in->gte(Carbon::parse("08:31:00"));
 
 			return [
 				'title' 		=> $item->name,
 				'start' 		=> $item->date . ' ' . $item->time_in,
 				'end'			=> $item->date . ' ' . $item->time_out,
 				'editable'		=> false,
-				'description'	=> $formatted_time_in . ' - ' . $formatted_time_out,
+				'description'	=> $in->format('g:i A') . ' - ' . $out->format('g:i A'),
 				'color'			=> (($late) ? 'red' : '')
 			];
 		});

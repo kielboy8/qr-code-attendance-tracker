@@ -30167,23 +30167,37 @@ $(function () {
  *  Attendance Page - FullCalendar  *
  ************************************/
 $(function () {
-    if ($('#calendar')) {
+    if ($('#calendar').length) {
         $('#calendar').fullCalendar({
             header: {
                 left: 'prev,next today',
                 center: 'title',
-                right: 'month,basicWeek,basicDay'
+                right: 'month,basicWeek,listDay'
             },
             businessHours: {
                 dow: [1, 2, 3, 4, 5, 6]
             },
             showNonCurrentDates: false,
-            events: {
-                url: "/admin/attendance/fetch",
-                type: "POST",
-                data: {
-                    '_token': $('meta[name="csrf-token"]').attr('content')
-                }
+            events: function events(start, end, timezone, callback) {
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+
+                $.ajax({
+                    url: "/admin/attendance/events",
+                    type: "POST",
+                    data: {
+                        start: start.format(),
+                        end: end.format()
+                    },
+                    success: function success(data) {
+                        console.log(start.format() + " " + end.format());
+                        console.log(data);
+                        callback(data);
+                    }
+                });
             },
             dayClick: function dayClick(date) {
                 $('#calendar').fullCalendar('select', date);
@@ -30198,12 +30212,21 @@ $(function () {
                     container: 'body'
                 });
             },
+            eventLimit: true,
+            eventLimitClick: 'popover',
             views: {
                 month: {
-                    displayEventTime: false
+                    displayEventTime: false,
+                    navLinks: true,
+                    navLinkDayClick: 'listDay'
                 },
-                basicDay: {
-                    displayEventEnd: true
+                basicWeek: {
+                    navLinkWeekClick: 'listDay'
+                },
+                listDay: {
+                    displayEventEnd: true,
+                    noEventsMessage: 'No attendance record on this day',
+                    titleFormat: 'dddd, MMMM, D, YYYY'
                 }
             }
         });

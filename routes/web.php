@@ -33,7 +33,7 @@ Route::post('/admin/employees/', 'QrCodeController@index');
 
 Route::get('/admin/attendance', 'AttendancesController@index');
 
-Route::post('/admin/attendance/fetch', 'AttendancesController@fetch');
+Route::post('/admin/attendance/events', 'AttendancesController@events');
 
 Route::get('/admin/notifications', 'NotificationsController@index');
 
