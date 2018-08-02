@@ -85,6 +85,6 @@ class ScanController extends Controller
             return response()->json([
                 'response' => 'Invalid QR code! Employee not found.'
             ]);
-        } 
+        }
     }
 }

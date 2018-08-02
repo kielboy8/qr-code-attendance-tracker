@@ -1,25 +1,7 @@
-
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
-
 require('./bootstrap');
-
-window.Vue = require('vue');
-
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
-
-Vue.component('example-component', require('./components/ExampleComponent.vue'));
-
-const app = new Vue({
-    el: '#app'
-});
+require('moment');
+require('fullcalendar');
+require('popper.js');
 
 // To show image upon attaching it to the input
 function createEmployeeImg(input) {
@@ -55,7 +37,6 @@ $("#edit-img-input").change(function() {
 $('#viewEmployee').on('show.bs.modal', function(event) {
     var button = $(event.relatedTarget)
 
-    var id = button.data('id')
     var profileImage = button.data('profileImage')
     var name = button.data('name')
     var position = button.data('position')
@@ -87,7 +68,6 @@ $('#editEmployee').on('show.bs.modal', function(event) {
     var position = button.data('position')
     var email = button.data('email')
     var contactNo = button.data('contactNo')
-    var attendanceId = button.data('attendanceId')
 
     var modal = $(this)
 
@@ -126,4 +106,75 @@ $(function () {
     $('#markAsRead').click(function() {
         $.get('/markAsRead')
     })
+})
+
+/************************************
+ *  Attendance Page - FullCalendar  *
+ ************************************/
+$(() => {
+    if ($('#calendar').length) {
+        $('#calendar').fullCalendar({
+            header: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'month,basicWeek,listDay'
+            },
+            businessHours: {
+                dow: [1, 2, 3, 4, 5, 6]
+            },
+            showNonCurrentDates: false,
+            events: (start, end, timezone, callback) => {
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+
+                $.ajax({
+                    url: "/admin/attendance/events",
+                    type: "POST",
+                    data: {
+                        start: start.format(),
+                        end: end.format()
+                    },
+                    success: (data) => {
+                        console.log(start.format() + " " + end.format());
+                        console.log(data);
+                        callback(data);
+                    }
+                });
+            },
+            dayClick: function(date) {
+                $('#calendar').fullCalendar('select', date);
+                window.location.href = "/admin/attendance?month=" + date.format("MMMM") +
+                                        "&day=" + date.format("DD") + "&year=" + date.format("YYYY");
+            },
+            eventRender: function(event, element) {
+                element.popover({
+                    title: event.title,
+                    content: event.description,
+                    trigger: 'hover',
+                    placement: 'top',
+                    container: 'body'
+                });
+            },
+            eventLimit: true,
+            eventLimitClick: 'popover',
+            views: {
+                month: {
+                    displayEventTime: false,
+                    navLinks: true,
+                    navLinkDayClick: 'listDay'
+                },
+                basicWeek: {
+                    navLinkWeekClick: 'listDay'
+                },
+                listDay: {
+                    displayEventEnd: true,
+                    noEventsMessage: 'No attendance record on this day',
+                    titleFormat: 'dddd, MMMM, D, YYYY'
+                }
+            }
+        });
+    }
 })

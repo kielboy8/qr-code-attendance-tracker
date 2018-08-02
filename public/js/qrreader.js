@@ -1,12 +1,13 @@
-$(document).ready(function() {
-    let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
+$(() => {
+    if ($('#preview').length) {
+        let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
 
-    scanner.addListener('scan', function (content) {
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
+        scanner.addListener('scan', function (content) {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
 
         $.ajax({
             type: "POST",
@@ -41,18 +42,17 @@ $(document).ready(function() {
                     }, 3000);
                     new Audio("sounds/fail.mp3").play();
                 }
-            }
+            });
         });
-    });
 
-    Instascan.Camera.getCameras().then(function (cameras) {
-        if (cameras.length > 0) {
-          scanner.start(cameras[0]);
-        } else {
-          console.error('No cameras found.');
-        }
-    }).catch(function (e) {
-        console.error(e);
-    });
-
+        Instascan.Camera.getCameras().then(function (cameras) {
+            if (cameras.length > 0) {
+              scanner.start(cameras[0]);
+            } else {
+              console.error('No cameras found.');
+            }
+        }).catch(function (e) {
+            console.error(e);
+        });
+    }
 });
