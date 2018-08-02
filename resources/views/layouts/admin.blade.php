@@ -19,8 +19,9 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 
-    <!-- Scanner Script -->
+    <!-- Javascript -->
     @yield ('scanner-script')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body class="bg-light">
     <div class="container-fluid">
@@ -31,7 +32,6 @@
     </div>
 
     <!-- Scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="https://unpkg.com/ionicons@4.2.4/dist/ionicons.js"></script>
@@ -44,13 +44,6 @@
         })
     </script>
 
-    @if (count($errors))
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $('#createEmployee').modal('show');
-        });
-    </script>
-    @endif
     @yield ('qr-reader-script')
 </body>
 </html>

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Attendance;
+use Carbon\Carbon;
 
 class AdminController extends Controller
 {
@@ -11,6 +13,7 @@ class AdminController extends Controller
     }
     
     public function index() {
-    	return view('dashboard.index');
+    	$attendanceToday = Attendance::where('date', Carbon::now()->format('Y-m-d'))->take(5)->get();
+    	return view('dashboard.index', compact('attendanceToday'));
     }
 }

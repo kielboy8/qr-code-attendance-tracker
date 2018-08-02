@@ -23,6 +23,8 @@ Route::get('/admin', 'AdminController@index');
 
 Route::get('/admin/employees', 'EmployeesController@index');
 
+Route::any('/admin/employees/search', 'EmployeesController@search');
+
 Route::post('/admin/employees/create', 'EmployeesController@store');
 
 Route::patch('/admin/employees/update', 'EmployeesController@update');

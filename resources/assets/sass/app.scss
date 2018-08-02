@@ -218,8 +218,16 @@ body {
  * Utilities
  */
 
-.border-top { border-top: 2px solid #e5e5e5 !important; }
-.border-bottom { border-bottom: 2px solid #e5e5e5 !important; }
+.border-top { 
+  border-top: 2px solid #e5e5e5 !important; 
+}
+.border-bottom { 
+  border-bottom: 2px solid #e5e5e5 !important; 
+}
+
+.border { 
+
+}
 
 .dropdown-header {
   font-weight: 800;
@@ -238,6 +246,18 @@ body {
 }
 
 .h1, .h2, .h3, .h4, .h5, .h6 {
+  font-weight: 600;
+}
+
+a {
+  color: #eb2000;
+}
+
+a:hover {
+  color: #eb2000;
+}
+
+h1, h2, h3, h4, h5, h6 {
   font-weight: 600;
 }
 
@@ -264,6 +284,36 @@ input, button, select, optgroup, textarea {
 label {
   font-size: 0.9rem;
   font-weight: 600;
+}
+
+.page-item.active .page-link {
+  background-color: #e20000;
+  border-color: #e20000;
+}
+
+.page-link {
+  font-weight: 600;
+  color: #000;
+}
+
+.page-link:hover {
+  z-index: 2;
+  color: #eb2000;
+  text-decoration: none;
+  background-color: #ffaa9d;
+  border-color: #ffaa9d;
+}
+
+.badge {
+  font-weight: 600;
+}
+
+.badge-primary {
+  background-color: #e20000;
+}
+
+.card-title {
+  font-weight: 900;
 }
 
 /*
@@ -337,8 +387,4 @@ label {
   font-family: "Material Design Icons";
   font-size: 1.25rem;
   font-weight: 300 !important;
-}
-
-#editEmployeeBtn {
-  margin-right: 1px;
 }

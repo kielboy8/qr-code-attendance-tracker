@@ -34,7 +34,7 @@ class AttendancesController extends Controller
     		$attendances = $attendances->whereYear('date', $year);
     	}
 
-    	$attendances = $attendances->get();
+    	$attendances = $attendances->paginate(10);
 
     	return view('attendances.index', compact(['attendances', 'archives']));
     }

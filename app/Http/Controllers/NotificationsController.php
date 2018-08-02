@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
 
 class NotificationsController extends Controller
 {
@@ -11,6 +12,7 @@ class NotificationsController extends Controller
     }
     
     public function index() {
-    	return view('notifications.index');
+    	$notifications = auth()->user()->notifications()->paginate(5);
+    	return view('notifications.index', compact('notifications'));
     }
 }

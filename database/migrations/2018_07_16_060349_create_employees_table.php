@@ -20,6 +20,7 @@ class CreateEmployeesTable extends Migration
             $table->text('email');
             $table->string('contact_no');
             $table->text('attendance_id');
+            $table->string('status');
             $table->string('profile_image');
             $table->timestamps();
         });
