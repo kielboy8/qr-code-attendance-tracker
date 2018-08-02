@@ -19,13 +19,23 @@ class EmployeesController extends Controller
         $this->middleware('auth');
     }
 
-    public function index() {
-		$employees = Employee::paginate(8);
+    public function index(Request $request) {
+		$employees = new Employee;
+
+		if($request->status == 'in-office') {
+			$employees = $employees->where('status', 'In-Office');
+		}
+		
+		if($request->status == 'out-of-office') {
+			$employees = $employees->where('status', 'Out-Of-Office');
+		}
+
+		$employees = $employees->paginate(8);
+
 		return view('employees.index', compact('employees'));
 	}
 
 	public function search(Request $request) {
-
         //$search = $request->search;
         $search = isset($_GET['s']) ? $_GET['s'] : $request->search;
         $employees = Employee::where('name', 'LIKE', '%' . $search . '%')

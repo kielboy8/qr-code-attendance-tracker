@@ -4,39 +4,35 @@
 @include ('layouts.sidebar')
 <main role="main" class="col ml-sm-auto pt-4 px-5">
     <div class="container-fluid">
-        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-1">
+        <div class="d-flex flex-column  flex-wrap flex-md-nowrap pb-2 mb-2">
             <h1 class="h2">Employees</h1>
-        </div>
-        <div class="row">
-            <div class="col">
+            <div class="mt-2">
                 <div class="d-flex flex-row">
                     <div class="mr-3">
                         <button type="button" class="btn btn-primary shadow" data-toggle="modal" data-target="#createEmployee">
                             Add Employee
                         </button>
                     </div>
-                    <div class="dropdown mb-3 mr-3">
+                    <div class="dropdown mr-3">
                         <button class="btn btn-secondary dropdown-toggle shadow" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Filter By
+                            Filter Status
                         </button>
                         <div class="dropdown-menu py-0" aria-labelledby="dropdownMenu2">
-                            <button class="dropdown-item py-2" type="button">Position</button>
+                            <a class="dropdown-item py-2" href="/admin/employees?status=in-office">In-Office</a>
                             <div class="dropdown-divider m-0"></div>
-                            <button class="dropdown-item py-2" type="button">Status</button>
-                            <div class="dropdown-divider m-0"></div>
-                            <button class="dropdown-item py-2" type="button">Most Recent</button>
+                            <a class="dropdown-item py-2" href="/admin/employees?status=out-of-office">Out-Of-Office</a>
                         </div>
                     </div>
                     <form class="form-inline ml-auto" action="/admin/employees/search" method="POST" role="search">
                         @csrf
-                        <div class="form-group mb-3 mr-2">
+                        <div class="form-group mr-2">
                             @if ($errors->has('search')) 
                                 <span class="mr-3 text-danger">Please input something.</span>
                             @endif
                             <label for="search" class="sr-only">Search</label>
                             <input type="text" class="form-control bg-light border-top-0 border-left-0 border-right-0 rounded-0" name="search" placeholder="Search">
                         </div>
-                        <button type="submit" class="btn btn-primary mb-3 shadow">Search</button>
+                        <button type="submit" class="btn btn-primary shadow">Search</button>
                     </form>
                 </div>
             </div>
@@ -69,7 +65,11 @@
                                 </td>
                                 <td>{{ $employee->attendance_id }}</td>
                                 <td>
-                                    <h5><span class="badge {{ $employee->status == 'In-Office' ? 'badge-success' : 'badge-primary' }}">{{ $employee->status }}</span></h5>
+                                    <h5>
+                                        <span class="badge {{ $employee->status == 'In-Office' ? 'badge-success' : 'badge-primary' }}">
+                                            {{ $employee->status }}
+                                        </span>
+                                    </h5>
                                 </td>
                                 <td>
                                     <button type="button"  id="editEmployeeBtn" class="btn btn-sm btn-primary shadow action-icon" data-id="{{ $employee->id }}"
@@ -104,7 +104,7 @@
                 @if (count($employees) > 0)
                 <div class="d-flex justify-content-end mb-4">
                     {{ $employees->links() }}
-                    @if (Request::path() == 'admin/employees/search')
+                    @if (Request::is('admin/employees*'))
                     <div>
                         <a href="/admin/employees" class="ml-3 btn btn-primary">Back</a>
                     </div>
