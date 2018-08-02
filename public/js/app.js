@@ -14888,27 +14888,10 @@ jQuery.fx.speeds = {
 	slow: 600,
 	fast: 200,
 
-<<<<<<< HEAD
-// To show image upon attaching it to the input
-function createEmployeeImg(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-        reader.onload = function (e) {
-            $('#add-profile-img').attr('src', e.target.result);
-        };
-        reader.readAsDataURL(input.files[0]);
-    }
-}
-
-$("#add-img-input").change(function () {
-    createEmployeeImg(this);
-});
-=======
 	// Default speed
 	_default: 400
 };
 
->>>>>>> develop
 
 // Based off of the plugin by Clint Helfers, with permission.
 // https://web.archive.org/web/20100324014747/http://blindsignals.com/index.php/2009/07/jquery-delay/
@@ -14916,17 +14899,6 @@ jQuery.fn.delay = function( time, type ) {
 	time = jQuery.fx ? jQuery.fx.speeds[ time ] || time : time;
 	type = type || "fx";
 
-<<<<<<< HEAD
-    var id = button.data('id');
-    var profileImage = button.data('profileImage');
-    var name = button.data('name');
-    var position = button.data('position');
-    var email = button.data('email');
-    var contactNo = button.data('contactNo');
-    var attendanceId = button.data('attendanceId');
-    var createdAt = button.data('createdAt');
-    var status = button.data('status');
-=======
 	return this.queue( type, function( next, hooks ) {
 		var timeout = window.setTimeout( next, time );
 		hooks.stop = function() {
@@ -14934,25 +14906,12 @@ jQuery.fn.delay = function( time, type ) {
 		};
 	} );
 };
->>>>>>> develop
 
 
-<<<<<<< HEAD
-    modal.find('.modal-body #view-profile-img').attr('src', '/storage/employee/images/' + profileImage);
-    modal.find('.modal-body #name').text(name);
-    modal.find('.modal-body #position').text(position);
-    modal.find('.modal-body #email').text(email);
-    modal.find('.modal-body #contactNo').text(contactNo);
-    modal.find('.modal-body #attendanceId').text(attendanceId);
-    modal.find('.modal-body #createdAt').text(createdAt);
-    modal.find('.modal-body #status').text(status);
-});
-=======
 ( function() {
 	var input = document.createElement( "input" ),
 		select = document.createElement( "select" ),
 		opt = select.appendChild( document.createElement( "option" ) );
->>>>>>> develop
 
 	input.type = "checkbox";
 
@@ -14964,36 +14923,6 @@ jQuery.fn.delay = function( time, type ) {
 	// Must access selectedIndex to make default options select
 	support.optSelected = opt.selected;
 
-<<<<<<< HEAD
-    modal.find('.modal-body #editId').val(id);
-    modal.find('.modal-body #editName').val(name);
-    modal.find('.modal-body #editPosition').val(position);
-    modal.find('.modal-body #editEmail').val(email);
-    modal.find('.modal-body #editContact_no').val(contactNo);
-    modal.find('.modal-body #edit-profile-img').attr('src', '/storage/employee/images/' + profileImage);
-});
-
-// Remove inputted information upon Add Employee Modal close
-$('#createEmployee').on('hidden.bs.modal', function (event) {
-    var modal = $(this);
-
-    modal.find('.modal-body #addName').val('');
-    modal.find('.modal-body #addPosition').val('');
-    modal.find('.modal-body #addEmail').val('');
-    modal.find('.modal-body #addContact_no').val('');
-    modal.find('.modal-body #add-profile-img').attr('src', '');
-    modal.find('.modal-body #add-img-input').val('');
-});
-
-// Show Delete alert confirmation
-$('table[data-form="deleteForm"]').on('click', '.form-delete', function (e) {
-    e.preventDefault();
-    var $form = $(this);
-    $('#confirm').modal({ backdrop: 'static', keyboard: false }).on('click', '#delete-btn', function () {
-        $form.submit();
-    });
-});
-=======
 	// Support: IE <=11 only
 	// An input loses its value after becoming a radio
 	input = document.createElement( "input" );
@@ -15002,7 +14931,6 @@ $('table[data-form="deleteForm"]').on('click', '.form-delete', function (e) {
 	support.radioValue = input.value === "t";
 } )();
 
->>>>>>> develop
 
 var boolHook,
 	attrHandle = jQuery.expr.attrHandle;
@@ -30152,13 +30080,13 @@ function createEmployeeImg(input) {
     if (input.files && input.files[0]) {
         var reader = new FileReader();
         reader.onload = function (e) {
-            $('#profile-img').attr('src', e.target.result);
+            $('#add-profile-img').attr('src', e.target.result);
         };
         reader.readAsDataURL(input.files[0]);
     }
 }
 
-$("#img-input").change(function () {
+$("#add-img-input").change(function () {
     createEmployeeImg(this);
 });
 
@@ -30187,6 +30115,8 @@ $('#viewEmployee').on('show.bs.modal', function (event) {
     var email = button.data('email');
     var contactNo = button.data('contactNo');
     var attendanceId = button.data('attendanceId');
+    var createdAt = button.data('createdAt');
+    var status = button.data('status');
 
     var modal = $(this);
 
@@ -30196,6 +30126,8 @@ $('#viewEmployee').on('show.bs.modal', function (event) {
     modal.find('.modal-body #email').text(email);
     modal.find('.modal-body #contactNo').text(contactNo);
     modal.find('.modal-body #attendanceId').text(attendanceId);
+    modal.find('.modal-body #createdAt').text(createdAt);
+    modal.find('.modal-body #status').text(status);
 });
 
 // Edit Employee Modal
@@ -30211,12 +30143,24 @@ $('#editEmployee').on('show.bs.modal', function (event) {
 
     var modal = $(this);
 
-    modal.find('.modal-body #id').val(id);
-    modal.find('.modal-body #name').val(name);
-    modal.find('.modal-body #position').val(position);
-    modal.find('.modal-body #email').val(email);
-    modal.find('.modal-body #contact_no').val(contactNo);
+    modal.find('.modal-body #editId').val(id);
+    modal.find('.modal-body #editName').val(name);
+    modal.find('.modal-body #editPosition').val(position);
+    modal.find('.modal-body #editEmail').val(email);
+    modal.find('.modal-body #editContact_no').val(contactNo);
     modal.find('.modal-body #edit-profile-img').attr('src', '/storage/employee/images/' + profileImage);
+});
+
+// Remove inputted information upon Add Employee Modal close
+$('#createEmployee').on('hidden.bs.modal', function (event) {
+    var modal = $(this);
+
+    modal.find('.modal-body #addName').val('');
+    modal.find('.modal-body #addPosition').val('');
+    modal.find('.modal-body #addEmail').val('');
+    modal.find('.modal-body #addContact_no').val('');
+    modal.find('.modal-body #add-profile-img').attr('src', '');
+    modal.find('.modal-body #add-img-input').val('');
 });
 
 // Show Delete alert confirmation
@@ -56666,7 +56610,7 @@ var View = /** @class */ (function (_super) {
         if (dateMutation) {
             eventInstance.dateProfile = dateMutation.buildNewDateProfile(eventInstance.dateProfile, this.calendar);
         }
-        this.triggerEventDrop(eventInstance,
+        this.triggerEventDrop(eventInstance, 
         // a drop doesn't necessarily mean a date mutation (ex: resource change)
         (dateMutation && dateMutation.dateDelta) || moment.duration(), undoFunc, el, ev);
     };
