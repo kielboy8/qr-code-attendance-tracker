@@ -18,9 +18,6 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-
-    <!-- Scanner Script -->
-    @yield ('scanner-script')
 </head>
 <body class="bg-light">
     <div class="container-fluid">
@@ -31,12 +28,12 @@
     </div>
 
     <!-- Scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-    <script src="{{ asset('js/app.js') }}" defer></script>
-    <script src="https://unpkg.com/ionicons@4.2.4/dist/ionicons.js"></script>
-    <script src="{{ asset('js/generateqr.js') }}"></script>
-    <script src="{{ asset('js/jquery.redirect.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
+    <script type="text/javascript" src="https://unpkg.com/ionicons@4.2.4/dist/ionicons.js"></script>
+    <script type="text/javascript" src="{{ asset('js/generateqr.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/jquery.redirect.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/instascan.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/qrreader.js') }}"></script>
 
     <script type="text/javascript">
         $(function() {
@@ -51,6 +48,5 @@
         });
     </script>
     @endif
-    @yield ('qr-reader-script')
 </body>
 </html>
