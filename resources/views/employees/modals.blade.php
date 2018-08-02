@@ -15,27 +15,27 @@
                         <div class="row">
                             <div class="col">
                                 <div class="form-group pb-2">
-                                    <input type="text" class="form-control mr-3 rounded-0 border-top-0 border-left-0 border-right-0" id="name" name="name" placeholder="Full Name">
+                                    <input type="text" class="form-control mr-3 rounded-0 border-top-0 border-left-0 border-right-0" id="addName" name="addName" placeholder="Full Name">
                                     @if(count($errors))
-                                        <small class="text-danger mt-1">{{ $errors->first('name') }}</small>
+                                        <small class="text-danger mt-1">{{ $errors->first('addName') }}</small>
                                     @endif
                                 </div>
                                 <div class="form-group pb-2">
-                                    <input type="text" class="form-control py-2 mb-1 rounded-0 border-top-0 border-left-0 border-right-0" id="position" name="position" placeholder="Position">
+                                    <input type="text" class="form-control py-2 mb-1 rounded-0 border-top-0 border-left-0 border-right-0" id="addPosition" name="addPosition" placeholder="Position">
                                     @if(count($errors))
-                                        <small class="text-danger mt-1">{{ $errors->first('position') }}</small>
+                                        <small class="text-danger mt-1">{{ $errors->first('addPosition') }}</small>
                                     @endif
                                 </div>
                                 <div class="form-group pb-2">
-                                    <input type="email" class="form-control py-2 mb-1 rounded-0 border-top-0 border-left-0 border-right-0" id="email" name="email" placeholder="E-Mail">
+                                    <input type="email" class="form-control py-2 mb-1 rounded-0 border-top-0 border-left-0 border-right-0" id="addEmail" name="addEmail" placeholder="E-Mail">
                                     @if(count($errors))
-                                        <small class="text-danger mt-1">{{ $errors->first('email') }}</small>
+                                        <small class="text-danger mt-1">{{ $errors->first('addEmail') }}</small>
                                     @endif
                                 </div>
                                 <div class="form-group pb-2">
-                                    <input type="number" class="form-control py-2 mb-1 rounded-0 border-top-0 border-left-0 border-right-0" id="contact_no" name="contact_no" placeholder="Contact Number">
+                                    <input type="number" class="form-control py-2 mb-1 rounded-0 border-top-0 border-left-0 border-right-0" id="addContact_no" name="addContact_no" placeholder="Contact Number">
                                     @if(count($errors))
-                                        <small class="text-danger mt-1">{{ $errors->first('contact_no') }}</small>
+                                        <small class="text-danger mt-1">{{ $errors->first('addContact_no') }}</small>
                                     @endif
                                 </div>
                                 <small class="text-muted">* Employee QR Code will be generated upon creation.</small>
@@ -50,10 +50,10 @@
                                         </div>
                                         <div class="row">
                                             <div class="col">
-                                                <img src="" id="profile-img" class="img-fluid profile-img rounded mb-3 text-center">
-                                                <input type="file" name="profile_image" id="img-input">
+                                                <img src="" id="add-profile-img" class="img-fluid profile-img rounded mb-3 text-center">
+                                                <input type="file" name="addProfile_image" id="add-img-input">
                                                 @if(count($errors))
-                                                    <small class="text-danger mt-2">{{ $errors->first('profile_image') }}</small>
+                                                    <small class="text-danger mt-2">{{ $errors->first('addProfile_image') }}</small>
                                                 @endif
                                             </div>
                                         </div>
@@ -65,7 +65,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary shadow" data-dismiss="modal">Close</button>
-                    <input type="submit" class="btn btn-primary shadow">
+                    <input type="submit" class="btn btn-primary shadow" name="add">
                 </div>
             </form>
         </div>
@@ -91,6 +91,8 @@
                             <p id="position" class="text-muted"></p>
                             <p id="email" class="text-muted mb-0">k</p>
                             <p id="contactNo" class="text-muted"></p>
+                            <p class="mb-0 text-muted">Date Created: <span id="createdAt" class="text-dark"></span></p>
+                            <p class="text-muted">Status: <span id="status" class="text-dark"></span></p>
                         </div>
                         <div class="col text-center">
                             <img id="qr-field" class="mb-0" src="">
@@ -123,29 +125,29 @@
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col">
-                                <input type="hidden" name="id" id="id" value="">
+                                <input type="hidden" name="editId" id="editId" value="">
                                 <div class="form-group pb-2">
-                                    <input type="text" class="form-control mr-3 rounded-0 border-top-0 border-left-0 border-right-0" id="name" name="name" placeholder="Full Name">
+                                    <input type="text" class="form-control mr-3 rounded-0 border-top-0 border-left-0 border-right-0" id="editName" name="editName" placeholder="Full Name">
                                     @if(count($errors))
-                                        <small class="text-danger mt-1">{{ $errors->first('name') }}</small>
+                                        <small class="text-danger mt-1">{{ $errors->first('editName') }}</small>
                                     @endif
                                 </div>
                                 <div class="form-group pb-2">
-                                    <input type="text" class="form-control py-2 mb-1 rounded-0 border-top-0 border-left-0 border-right-0" id="position" name="position" placeholder="Position">
+                                    <input type="text" class="form-control py-2 mb-1 rounded-0 border-top-0 border-left-0 border-right-0" id="editPosition" name="editPosition" placeholder="Position">
                                     @if(count($errors))
-                                        <small class="text-danger mt-1">{{ $errors->first('position') }}</small>
+                                        <small class="text-danger mt-1">{{ $errors->first('editPosition') }}</small>
                                     @endif
                                 </div>
                                 <div class="form-group pb-2">
-                                    <input type="email" class="form-control py-2 mb-1 rounded-0 border-top-0 border-left-0 border-right-0" id="email" name="email" placeholder="E-Mail">
+                                    <input type="email" class="form-control py-2 mb-1 rounded-0 border-top-0 border-left-0 border-right-0" id="editEmail" name="editEmail" placeholder="E-Mail">
                                     @if(count($errors))
-                                        <small class="text-danger mt-1">{{ $errors->first('email') }}</small>
+                                        <small class="text-danger mt-1">{{ $errors->first('editEmail') }}</small>
                                     @endif
                                 </div>
                                 <div class="form-group pb-2">
-                                    <input type="number" class="form-control py-2 mb-1 rounded-0 border-top-0 border-left-0 border-right-0" id="contact_no" name="contact_no" placeholder="Contact Number">
+                                    <input type="number" class="form-control py-2 mb-1 rounded-0 border-top-0 border-left-0 border-right-0" id="editContact_no" name="editContact_no" placeholder="Contact Number">
                                     @if(count($errors))
-                                        <small class="text-danger mt-1">{{ $errors->first('contact_no') }}</small>
+                                        <small class="text-danger mt-1">{{ $errors->first('editContact_no') }}</small>
                                     @endif
                                 </div>
                                 <small class="text-muted">* Employee QR Code will stay the same upon edit.</small>
@@ -161,9 +163,9 @@
                                         <div class="row">
                                             <div class="col">
                                                 <img src="" id="edit-profile-img" class="img-fluid profile-img rounded mb-3 text-center">
-                                                <input type="file" name="profile_image" id="edit-img-input">
+                                                <input type="file" name="editProfile_image" id="edit-img-input">
                                                 @if(count($errors))
-                                                    <small class="text-danger mt-2">{{ $errors->first('profile_image') }}</small>
+                                                    <small class="text-danger mt-2">{{ $errors->first('editProfile_image') }}</small>
                                                 @endif
                                             </div>
                                         </div>
@@ -204,3 +206,11 @@
         </div>
     </div>
 </div>
+
+@if ($errors->has('addEmployee'))
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#createEmployee').modal('show');
+        });
+    </script>
+@endif

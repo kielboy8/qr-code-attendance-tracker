@@ -24,7 +24,7 @@ class AttendancesController extends Controller
 			return view('attendances.index');
 		}
 
-    	$attendances = $attendances->get();
+    	$attendances = $attendances->paginate(10);
 
 		$today = request('month') . ' ' . request('day') . ' ' . request('year');
 		$today = Carbon::parse($today)->format('F d Y');

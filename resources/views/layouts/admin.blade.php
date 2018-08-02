@@ -40,13 +40,5 @@
             $('[data-toggle="tooltip"]').tooltip();
         })
     </script>
-
-    @if (count($errors))
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $('#createEmployee').modal('show');
-        });
-    </script>
-    @endif
 </body>
 </html>

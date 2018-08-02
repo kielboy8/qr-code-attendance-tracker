@@ -8,13 +8,13 @@ function createEmployeeImg(input) {
     if (input.files && input.files[0]) {
         var reader = new FileReader()
         reader.onload = function(e) {
-            $('#profile-img').attr('src', e.target.result)
+            $('#add-profile-img').attr('src', e.target.result)
         }
         reader.readAsDataURL(input.files[0])
     }
 }
 
-$("#img-input").change(function() {
+$("#add-img-input").change(function() {
     createEmployeeImg(this);
 });
 
@@ -43,6 +43,8 @@ $('#viewEmployee').on('show.bs.modal', function(event) {
     var email = button.data('email')
     var contactNo = button.data('contactNo')
     var attendanceId = button.data('attendanceId')
+    var createdAt = button.data('createdAt')
+    var status = button.data('status')
 
     var modal = $(this)
 
@@ -52,6 +54,8 @@ $('#viewEmployee').on('show.bs.modal', function(event) {
     modal.find('.modal-body #email').text(email)
     modal.find('.modal-body #contactNo').text(contactNo)
     modal.find('.modal-body #attendanceId').text(attendanceId)
+    modal.find('.modal-body #createdAt').text(createdAt)
+    modal.find('.modal-body #status').text(status)
 })
 
 // Edit Employee Modal
@@ -67,12 +71,24 @@ $('#editEmployee').on('show.bs.modal', function(event) {
 
     var modal = $(this)
 
-    modal.find('.modal-body #id').val(id)
-    modal.find('.modal-body #name').val(name)
-    modal.find('.modal-body #position').val(position)
-    modal.find('.modal-body #email').val(email)
-    modal.find('.modal-body #contact_no').val(contactNo)
+    modal.find('.modal-body #editId').val(id)
+    modal.find('.modal-body #editName').val(name)
+    modal.find('.modal-body #editPosition').val(position)
+    modal.find('.modal-body #editEmail').val(email)
+    modal.find('.modal-body #editContact_no').val(contactNo)
     modal.find('.modal-body #edit-profile-img').attr('src', '/storage/employee/images/' + profileImage)
+})
+
+// Remove inputted information upon Add Employee Modal close
+$('#createEmployee').on('hidden.bs.modal', function(event) {
+    var modal = $(this)
+
+    modal.find('.modal-body #addName').val('')
+    modal.find('.modal-body #addPosition').val('')
+    modal.find('.modal-body #addEmail').val('')
+    modal.find('.modal-body #addContact_no').val('')
+    modal.find('.modal-body #add-profile-img').attr('src', '')
+    modal.find('.modal-body #add-img-input').val('')
 })
 
 // Show Delete alert confirmation
