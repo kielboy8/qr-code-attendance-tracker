@@ -114,6 +114,7 @@ $(function () {
 $(() => {
     if ($('#calendar').length) {
         $('#calendar').fullCalendar({
+            themeSystem: 'bootstrap4',
             header: {
                 left: 'prev,next today',
                 center: 'title',
