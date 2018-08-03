@@ -10881,3 +10881,8 @@ div.calendar-hide {
   display: none;
 }
 
+.btn:disabled {
+  background-color: #6c757d;
+  border: 1px solid #6c757d;
+}
+

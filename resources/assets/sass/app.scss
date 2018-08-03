@@ -404,10 +404,7 @@ div.calendar-hide {
     display: none;
 }
 
-.fc-past {
-    //background-color: #E5E5E5;
-}
-
-.fc-today {
-    //background-color: #FAFAD2 !important;
+.btn:disabled {
+    background-color: #6c757d;
+    border: 1px solid #6c757d;
 }
