@@ -8,10 +8,9 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use App\Employee;
 
-class Overtime extends Notification
+class LateTimeIn extends Notification
 {
     use Queueable;
-
     public $employee;
     /**
      * Create a new notification instance.
@@ -41,13 +40,13 @@ class Overtime extends Notification
      * @return array
      */
     public function toDatabase($notifiable)
-    {   
+    {
         $employee = $this->employee;
         return [
             'name' => $employee->name,
             'position' => $employee->position,
             'profile-image' => $employee->profile_image,
-            'status' => 'has went overtime.'
+            'status' => 'has timed in late.'
         ];
     }
 }

@@ -9,6 +9,8 @@ $factory->define(App\Employee::class, function (Faker $faker) {
         'position' => $faker->jobtitle,
         'email' => $faker->unique()->safeEmail,
         'contact_no' => $faker->e164PhoneNumber,
-        'attendance_id' => Str::random()
+        'attendance_id' => Str::random(),
+        'status' => 'Out-Of-Office',
+        'profile_image' => 'noimage.jpg'
     ];
 });

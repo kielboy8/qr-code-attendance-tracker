@@ -8,7 +8,7 @@
                 </a>
             </li>
             <li class="nav-item pb-3">
-                <a class="nav-link {{ Request::path() == 'admin/employees' ? 'active font-weight-600' : 'text-muted' }}" href="/admin/employees">
+                <a class="nav-link {{ Request::path() == 'admin/employees' | Request::path() == 'admin/employees/search' ? 'active font-weight-600' : 'text-muted' }}" href="/admin/employees">
                     <i class="mdi mdi-account-outline mr-3" aria-hidden="true"></i>
                     Employees
                 </a>
@@ -19,7 +19,7 @@
                     Attendance
                 </a>
             </li>
-            <li class="nav-item pb-3">
+            <li class="nav-item">
                 <a class="nav-link {{ Request::path() == 'admin/notifications' ? 'active font-weight-600' : 'text-muted' }}" href="/admin/notifications">
                     <i class="mdi mdi-bell-outline mr-3"></i>
                     Notifications

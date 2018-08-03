@@ -4,32 +4,29 @@
         Attendance
         <small class="text-muted">dev</small>
     </a>
-    <div id="navbarNavDropdown" class="navbar-collapse collapse">
-        <ul class="navbar-nav mr-auto">
-
-        </ul>
-        <ul class="navbar-nav">
+    <div id="navbarNavDropdown" class="navbar-collapse collapse d-flex align-items-center">
+        <ul class="navbar-nav ml-auto">
             @guest
-            <li class="nav-item">
-                <a class="nav-link lead" href="/login">Login</a>
+            <li class="nav-item lead">
+                <a class="nav-link" href="/login">Login</a>
             </li>
             @else
-            <li class="nav-item dropdown" id="markAsRead">
-                <a class="nav-link lead dropdown-toggle" id="notificationsIcon" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">
+            <li class="nav-item dropdown lead pt-1 mr-2" id="markAsRead">
+                <a class="nav-link dropdown-toggle" id="notificationsIcon" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">
                     <i class="mdi mdi-bell-outline"></i>
-                    {{ count(auth()->user()->unreadNotifications) }}
+                    <span class="badge badge-primary mb-2">{{ count(auth()->user()->unreadNotifications) }}</span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right shadow border-0 px-3 py-2" aria-labelledby="notificationsIcon">
                     <p class="dropdown-header border-bottom py-2 mb-2 px-2">Notifications</p>
                     @forelse(auth()->user()->unreadNotifications as $notification)
-                    @include('notifications.' . snake_case(class_basename($notification->type)))
+                    @include('notifications.notificationLink')
                     @empty
                     <a class="dropdown-item px-2" href="#">No unread notifications.</a>
                     @endforelse
                 </div>
             </li>
-            <li class="nav-item">
-                <a class="nav-link lead" href="/logout">Logout</a>
+            <li class="nav-item lead pt-1">
+                <a class="nav-link" href="/logout">Logout</a>
             </li>
             @endif
         </ul>

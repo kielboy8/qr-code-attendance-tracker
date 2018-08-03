@@ -19,37 +19,63 @@ class EmployeesController extends Controller
         $this->middleware('auth');
     }
 
-    public function index() {
-		$employees = Employee::get();
+    public function index(Request $request) {
+		$employees = new Employee;
+
+		if($request->status == 'in-office') {
+			$employees = $employees->where('status', 'In-Office');
+		}
+		
+		if($request->status == 'out-of-office') {
+			$employees = $employees->where('status', 'Out-Of-Office');
+		}
+
+		$employees = $employees->paginate(8);
+
 		return view('employees.index', compact('employees'));
+	}
+
+	public function search(Request $request) {
+        //$search = $request->search;
+        $search = isset($_GET['s']) ? $_GET['s'] : $request->search;
+        $employees = Employee::where('name', 'LIKE', '%' . $search . '%')
+        			->orWhere('position', 'LIKE', '%' . $search . '%')
+        			->paginate(8)
+        			->setPath('');
+        $employees->appends(array(
+        	's' => $search
+        ));
+
+        return view('employees.index', compact('employees'));
 	}
 
 	public function store(Request $request) {
 		$request->validate([
-			'name' => 'required',
-			'position' => 'required',
-			'email' => 'required|email',
-			'contact_no' => 'required|numeric',
-			'profile-image' => 'image|nullable|max:2048'
+			'addName' => 'required',
+			'addPosition' => 'required',
+			'addEmail' => 'required|email',
+			'addContact_no' => 'required|numeric',
+			'addProfile-image' => 'image|nullable|max:2048'
 		]);
 
-		if($request->hasFile('profile_image')) {
-			$filenameWithExt = $request->file('profile_image')->getClientOriginalName();
+		if($request->hasFile('addProfile_image')) {
+			$filenameWithExt = $request->file('addProfile_image')->getClientOriginalName();
 			$filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-			$extension = $request->file('profile_image')->getClientOriginalExtension();
+			$extension = $request->file('addProfile_image')->getClientOriginalExtension();
 			$filenameToStore = $filename . '_' . time() . '.' . $extension;
-			$path = $request->file('profile_image')->storeAs('public/employee/images', $filenameToStore);
+			$path = $request->file('addProfile_image')->storeAs('public/employee/images', $filenameToStore);
 		} 
 		else {
 			$filenameToStore = "noimage.jpg";
 		}
 
 		Employee::create([
-            'name' => $request->input('name'),
+            'name' => $request->input('addName'),
             'attendance_id' => Str::random(),
-            'position' => $request->input('position'),
-			'email' => $request->input('email'),
-			'contact_no' => $request->input('contact_no'),
+            'position' => $request->input('addPosition'),
+			'email' => $request->input('addEmail'),
+			'contact_no' => $request->input('addContact_no'),
+			'status' => 'Out-Of-Office',
 			'profile_image' => $filenameToStore
         ]);
 
@@ -58,36 +84,36 @@ class EmployeesController extends Controller
 
 	public function update(Request $request) {
 		$request->validate([
-			'name' => 'required',
-			'position' => 'required',
-			'email' => 'required|email',
-			'contact_no' => 'required|numeric',
-			'profile-image' => 'image|nullable|max:2048'
+			'editName' => 'required',
+			'editPosition' => 'required',
+			'editEmail' => 'required|email',
+			'editContact_no' => 'required|numeric',
+			'editProfile-image' => 'image|nullable|max:2048'
 		]);
 
-		$employee = Employee::findOrFail($request->id);
+		$employee = Employee::findOrFail($request->editId);
 
-		if($request->hasFile('profile_image')) {
-			$filenameWithExt = $request->file('profile_image')->getClientOriginalName();
+		if($request->hasFile('editProfile_image')) {
+			$filenameWithExt = $request->file('editProfile_image')->getClientOriginalName();
 			$filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-			$extension = $request->file('profile_image')->getClientOriginalExtension();
+			$extension = $request->file('editProfile_image')->getClientOriginalExtension();
 			$filenameToStore = $filename . '_' . time() . '.' . $extension;
-			$path = $request->file('profile_image')->storeAs('public/employee/images', $filenameToStore);
+			$path = $request->file('editProfile_image')->storeAs('public/employee/images', $filenameToStore);
 
 			$employee->update([
-	            'name' => $request->input('name'),
-	            'position' => $request->input('position'),
-				'email' => $request->input('email'),
-				'contact_no' => $request->input('contact_no'),
+	            'name' => $request->input('editName'),
+	            'position' => $request->input('editPosition'),
+				'email' => $request->input('editEmail'),
+				'contact_no' => $request->input('editContact_no'),
 				'profile_image' => $filenameToStore
 	        ]);
 		}
 		else {
 			$employee->update([
-	            'name' => $request->input('name'),
-	            'position' => $request->input('position'),
-				'email' => $request->input('email'),
-				'contact_no' => $request->input('contact_no'),
+	            'name' => $request->input('editName'),
+	            'position' => $request->input('editPosition'),
+				'email' => $request->input('editEmail'),
+				'contact_no' => $request->input('editContact_no'),
 	        ]);
 		}
 

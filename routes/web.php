@@ -23,6 +23,8 @@ Route::get('/admin', 'AdminController@index');
 
 Route::get('/admin/employees', 'EmployeesController@index');
 
+Route::any('/admin/employees/search', 'EmployeesController@search');
+
 Route::post('/admin/employees/create', 'EmployeesController@store');
 
 Route::patch('/admin/employees/update', 'EmployeesController@update');
@@ -32,6 +34,12 @@ Route::delete('/admin/employees/delete/{employee}', 'EmployeesController@delete'
 Route::post('/admin/employees/', 'QrCodeController@index');
 
 Route::get('/admin/attendance', 'AttendancesController@index');
+
+Route::post('/admin/attendance/events', 'AttendancesController@events');
+
+Route::post('/admin/attendance/export', 'AttendancesController@export');
+
+Route::delete('/admin/attendance/delete/{attendance}', 'AttendancesController@delete');
 
 Route::get('/admin/notifications', 'NotificationsController@index');
 
