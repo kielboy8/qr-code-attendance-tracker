@@ -65,7 +65,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary shadow" data-dismiss="modal">Close</button>
-                    <input type="submit" class="btn btn-primary shadow" name="add">
+                    <input type="submit" class="btn btn-primary shadow" name="add" value="Submit">
                 </div>
             </form>
         </div>
@@ -177,7 +177,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary shadow" data-dismiss="modal">Close</button>
-                    <input type="submit" class="btn btn-primary shadow">
+                    <input type="submit" class="btn btn-primary shadow" value="Submit">
                 </div>
             </form>
         </div>

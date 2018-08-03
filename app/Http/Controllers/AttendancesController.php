@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Attendance;
+use App\Employee;
+use App\Exports\AttendanceExport;
 use Carbon\Carbon;
+use Maatwebsite\Excel\Facades\Excel;
 
 class AttendancesController extends Controller
 {
@@ -32,8 +35,7 @@ class AttendancesController extends Controller
     	return view('attendances.index', compact(['attendances', 'today']));
     }
 
-	public function events()
-	{
+	public function events() {
 		$start = Carbon::parse(request('start'));
 		$end = Carbon::parse(request('end'))->subDay();
 		$attendances = Attendance::whereBetween('date', [$start, $end])->get();
@@ -54,5 +56,19 @@ class AttendancesController extends Controller
 		});
 
 		return response()->json($attendances);
+	}
+
+	public function export(Request $request) {
+		$date = $request->year . '-' . Carbon::parse($request->month)->month . '-' . $request->day;
+		return (new AttendanceExport($date))->download('attendances-' . $date . '.xlsx');
+	}
+
+	public function delete(Attendance $attendance) {
+		$employee = Employee::where('id', $attendance->employee_id)->first();
+		$employee->status = "Out-Of-Office";
+		$employee->save();
+
+		$attendance->delete();
+		return back();
 	}
 }
