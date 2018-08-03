@@ -5,10 +5,11 @@ namespace App\Exports;
 use Maatwebsite\Excel\Concerns\FromQuery;
 use Maatwebsite\Excel\Concerns\Exportable;
 use Maatwebsite\Excel\Concerns\WithHeadings;
+use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 use App\Attendance;
 use Carbon\Carbon;
 
-class AttendanceExport implements FromQuery, withHeadings
+class AttendanceExport implements FromQuery, withHeadings, ShouldAutoSize
 {
 	use Exportable;
 
